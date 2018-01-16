@@ -1,4 +1,4 @@
-class CommentsApi {
+export default class CommentsApi {
 
 	constructor(baseUrl = '/comments/') {
 		this.axios = axios.create({

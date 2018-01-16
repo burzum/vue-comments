@@ -1,13 +1,16 @@
-getUser: function(state) {
+export const getUser = function(state) {
 	return state.user;
-},
-isLoginRequired: function(state) {
+};
+
+export const isLoginRequired = function(state) {
 	return state.loginRequired;
-},
-isLoggedIn: function(state) {
+};
+
+export const isLoggedIn = function(state) {
 	return state.user !== undefined && state.user !== null;
-},
-isMyComment: function (state) {
+};
+
+export const isMyComment = function (state) {
 	return function(comment) {
 		if (typeof state.user === 'object' && state.user !== null) {
 			return state.user.id == comment.user_id;
@@ -15,14 +18,17 @@ isMyComment: function (state) {
 
 		return false;
 	}
-},
-getOrderBy: function(state) {
+};
+
+export const getOrderBy = function(state) {
 	return state.orderBy;
-},
-getComments: function(state) {
+};
+
+export const getComments = function(state) {
 	return state.comments;
-},
-hasChildren: function(state) {
+};
+
+export const hasChildren = function(state) {
 	return function(model, modelId, parentId = null) {
 		let result = state.comments.filter(function(comment) {
 			// Has to be weak typed, fucking dynamic types
@@ -33,8 +39,9 @@ hasChildren: function(state) {
 
 		return result.length > 0;
 	}
-},
-hasMore: function(state) {
+};
+
+export const hasMore = function(state) {
 	return function(model, modelId, parentId = null) {
 		let key = model + modelId + parentId;
 		let pagination = Object.assign({}, state.pagination);
@@ -45,8 +52,9 @@ hasMore: function(state) {
 
 		return false;
 	}
-},
-getCommentsForModel: function(state) {
+};
+
+export const getCommentsForModel = function(state) {
 	return function(model, modelId, parentId) {
 		let comments = state.comments.filter(function(comment) {
 			// Has to be weak typed, fucking dynamic types
@@ -68,8 +76,9 @@ getCommentsForModel: function(state) {
 
 		return comments;
 	}
-},
-getPagination: function(state) {
+};
+
+export const getPagination = function(state) {
 	return function (model, modelId, parentId = null) {
 		let key = model + modelId + parentId;
 

@@ -1,5 +1,8 @@
-loadComments: function(context, data) {
-	api = new CommentsApi();
+import CommentsApi from '../api/restful-api';
+
+let api = new CommentsApi();
+
+export const loadComments = function(context, data) {
 	return api.getComments(
 		data.model,
 		data.modelId,
@@ -21,9 +24,9 @@ loadComments: function(context, data) {
 			});
 		});
 	});
-},
-deleteComment: function(context, data) {
-	api = new CommentsApi();
+};
+
+export const deleteComment = function(context, data) {
 	return api.add(
 		data.model,
 		data.foreign_key,
@@ -31,9 +34,9 @@ deleteComment: function(context, data) {
 	).then(function(result) {
 		context.commit('addComment', result.data.comment);
 	});
-},
-updateComment: function(context, data) {
-	api = new CommentsApi();
+};
+
+export const updateComment = function(context, data) {
 	return api.update(
 		data.model,
 		data.foreign_key,
@@ -41,9 +44,9 @@ updateComment: function(context, data) {
 	).then(function(result) {
 		context.commit('addComment', result.data.comment);
 	});
-},
-addComment: function(context, data) {
-	api = new CommentsApi();
+}
+
+export const addComment = function(context, data) {
 	return api.add(
 		data.model,
 		data.foreign_key,

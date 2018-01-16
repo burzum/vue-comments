@@ -1,26 +1,32 @@
-setLastCommentTime(state) {
+export const setLastCommentTime = function(state) {
 	state.lastCommentTime = new Date();
-},
-setMaxDepth(state, depth) {
+};
+
+export const setMaxDepth = function(state, depth) {
 	if (typeof depth !=='number') {
 		throw 'Depth must be an integer';
 	}
 
 	state.maxDepth = depth;
-},
-setOrderBy(state, orderBy) {
+};
+
+export const setOrderBy = function(state, orderBy) {
 	state.orderBy = orderBy;
-},
-orderByNewest(state) {
+};
+
+export const orderByNewest = function(state) {
 	state.orderBy = 'newest';
-},
-oderByOldest(state) {
+};
+
+export const oderByOldest = function(state) {
 	state.orderBy = 'oldest';
-},
-setUser(user) {
-	state.user = user;
-},
-addComment: function(state, comment) {
+};
+
+export const setUser = function(state, user) {
+	Vue.set(state, 'user', user);
+};
+
+export const addComment = function(state, comment) {
 	comment.created = new Date(comment.created);
 
 	state.comments.push(comment);
@@ -31,26 +37,30 @@ addComment: function(state, comment) {
 			state.comments.push(comment.comments[i]);
 		}
 	};
-},
-deleteComment: function(state, comment) {
+};
+
+export const deleteComment = function(state, comment) {
 	state.comments = state.comments.filter(function(commentFromList) {
 		return commentFromList.id !== comment.id;
 	});
-},
-updateComment: function(state, editedComment) {
+};
+
+export const updateComment = function(state, editedComment) {
 	state.comments.forEach(function(comment) {
 		if (comment.id == editedComment.id) {
 			let index = state.comments.indexOf(comment);
 			state.comments[index] = editedComment;
 		};
 	});
-},
-updatePagination: function(state, data) {
+};
+
+export const updatePagination = function(state, data) {
 	let key = data.model + data.modelId + data.parentId;
 
 	Vue.set(state.pagination, key, data.pagination);
-},
-clearComments: function(state, data) {
+};
+
+export const clearComments = function(state, data) {
 	let comments = state.comments;
 
 	comments.forEach((comment, index) => {
@@ -63,4 +73,4 @@ clearComments: function(state, data) {
 	});
 
 	Vue.set(state, 'comments', comments);
-}
+};
