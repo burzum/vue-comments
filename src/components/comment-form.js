@@ -54,7 +54,7 @@ Vue.component('comment-form', {
 
 	computed: {
 		isLoggedIn: function() {
-			return commentsStore.getters.isLoggedIn;
+			return this.$store.getters.isLoggedIn;
 		},
 	},
 
@@ -94,7 +94,7 @@ Vue.component('comment-form', {
 			}
 
 			if (this.comment !== null) {
-				commentsStore.dispatch('updateComment', this.comment2).then(() => {
+				this.$store.dispatch('updateComment', this.comment2).then(() => {
 					this.clearAndReset();
 				}).catch((error ) => {
 					this.error = 'There was a problem saving your comment';
@@ -102,7 +102,7 @@ Vue.component('comment-form', {
 				return;
 			}
 
-			commentsStore.dispatch('addComment', this.comment2)
+			this.$store.dispatch('addComment', this.comment2)
 				.then(() => {
 					this.clearAndReset();
 				}).catch((error ) => {

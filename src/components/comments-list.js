@@ -29,7 +29,7 @@ Vue.component('comments-list', {
 	},
 	created: function() {
 		if (this.parentId === null) {
-			commentsStore.dispatch('loadComments', {
+			this.$store.dispatch('loadComments', {
 				model: this.model,
 				modelId: this.modelId,
 				parentId: this.parentId
@@ -38,7 +38,7 @@ Vue.component('comments-list', {
 	},
 	methods: {
 		loadMore: function() {
-			commentsStore.dispatch('loadComments', {
+			this.$store.dispatch('loadComments', {
 				model: this.model,
 				modelId: this.modelId,
 				parentId: this.parentId,
@@ -50,21 +50,21 @@ Vue.component('comments-list', {
 	},
 	computed: {
 		pagination: function() {
-			return commentsStore.getters.getPagination(
+			return this.$store.getters.getPagination(
 				this.model,
 				this.modelId,
 				this.parentId
 			);
 		},
 		comments: function() {
-			return commentsStore.getters.getCommentsForModel(
+			return this.$store.getters.getCommentsForModel(
 				this.model,
 				this.modelId,
 				this.parentId
 			);
 		},
 		hasMore: function() {
-			return commentsStore.getters.hasMore(
+			return this.$store.getters.hasMore(
 				this.model,
 				this.modelId,
 				this.parentId

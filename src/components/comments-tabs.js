@@ -22,20 +22,20 @@ Vue.component('comments-tabs', {
 	},
 	methods: {
 		sortBy(orderBy) {
-			commentsStore.commit('setOrderBy', orderBy);
-			commentsStore.commit('clearComments', {
+			this.$store.commit('setOrderBy', orderBy);
+			this.$store.commit('clearComments', {
 				model: this.model,
 				modelId: this.modelId,
 				parentId: this.parentId
 			});
-			commentsStore.dispatch('loadComments', {
+			this.$store.dispatch('loadComments', {
 				model: this.model,
 				modelId: this.modelId,
 				parentId: this.parentId
 			});
 		},
 		isActive(value) {
-			return commentsStore.getters.getOrderBy === value;
+			return this.$store.getters.getOrderBy === value;
 		}
 	}
 });

@@ -39,20 +39,20 @@ Vue.component('comment', {
 	},
 	computed: {
 		hasChildren: function() {
-			return commentsStore.getters.hasChildren(
+			return this.$store.getters.hasChildren(
 				this.model,
 				this.modelId,
 				this.comment.id,
 			);
 		},
 		isLoggedIn: function() {
-			return commentsStore.getters.isLoggedIn;
+			return this.$store.getters.isLoggedIn;
 		},
 		isMyComment: function () {
-			return commentsStore.getters.isMyComment(this.comment);
+			return this.$store.getters.isMyComment(this.comment);
 		},
 		isLoginRequired: function() {
-			return commentsStore.getters.isLoginRequired
+			return this.$store.getters.isLoginRequired
 		}
 	},
 	methods: {
@@ -66,7 +66,7 @@ Vue.component('comment', {
 			this.formMode = 'edit';
 		},
 		deleteComment: function () {
-			return commentsStore.commit('deleteComment', this.comment);
+			return this.$store.commit('deleteComment', this.comment);
 		}
 	},
 	data: function() {

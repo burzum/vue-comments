@@ -4,6 +4,23 @@ Thought as a general purpose comments widget based on Vue.js. Similar to Faceboo
 
 ## Usage
 
+Register the comments store module within your global vuex store:
+
+```js
+import commentsModule from './store/store';
+import Vuex from 'vuex';
+
+const store = new Vuex.Store({
+	modules: {
+		comments: commentsModule,
+	}
+});
+
+```
+
+Inside templates:
+
+
 ```html
 <comments-widget
 	model="Posts"

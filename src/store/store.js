@@ -1,9 +1,13 @@
 import * as actions from '/actions';
 import * as getters from '/getters';
 import * as mutations from '/mutations';
-import Vuex from 'vuex';
 
-export const store = new Vuex.Store({
+/**
+ * The comments store module for Vuex
+ *
+ * @link https://vuex.vuejs.org/en/modules.html
+ */
+const module = new{
 	strict: true,
 	state: {
 		loginRequired: true,
@@ -18,4 +22,6 @@ export const store = new Vuex.Store({
 	actions: actions,
 	mutations: mutations,
 	getters: getters
-});
+};
+
+export default module;
