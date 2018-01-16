@@ -1,3 +1,5 @@
+import Vue from 'vue';
+
 Vue.component('comment', {
 	template:
 		'<div class="comment">' +

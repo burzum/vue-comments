@@ -1,6 +1,7 @@
 import * as actions from '/actions';
 import * as getters from '/getters';
 import * as mutations from '/mutations';
+import Vuex from 'vuex';
 
 export const store = new Vuex.Store({
 	strict: true,

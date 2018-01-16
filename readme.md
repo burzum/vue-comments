@@ -1,3 +1,13 @@
 # Comments Widget for Vue.js
 
-Similar to Facebooks comments or Disqus.
+Thought as a general purpose comments widget based on Vue.js. Similar to Facebooks comments or Disqus.
+
+## Usage
+
+```html
+<comments-widget
+	model="Posts"
+	model-id="1"
+>
+</comments-widget>
+```

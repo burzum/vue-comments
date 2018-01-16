@@ -1,3 +1,5 @@
+import Vue from 'vue';
+
 Vue.component('comments-widget', {
 	template:
 		'<div class="comment-widget">' +

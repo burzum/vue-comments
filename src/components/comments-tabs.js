@@ -1,3 +1,5 @@
+import Vue from 'vue';
+
 Vue.component('comments-tabs', {
 	template:
 		'<ul class="nav nav-tabs">' +

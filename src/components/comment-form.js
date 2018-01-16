@@ -1,3 +1,5 @@
+import Vue from 'vue';
+
 Vue.component('comment-form', {
 	template:
 		'<form class="form comment-form" v-on:submit.prevent="validateBeforeSubmit()" >' +
