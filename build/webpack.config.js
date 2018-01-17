@@ -14,7 +14,8 @@ module.exports = {
 	externals: {
 		vuex: 'vuex',
 		vue: 'vue',
-		axios: 'axios'
+		axios: 'axios',
+		VeeValidate: 'VeeValidate'
 	},
 	module: {
 		rules: [

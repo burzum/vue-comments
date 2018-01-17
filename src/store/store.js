@@ -7,7 +7,7 @@ import * as mutations from './mutations';
  *
  * @link https://vuex.vuejs.org/en/modules.html
  */
-const module = new{
+const module = {
 	strict: true,
 	state: {
 		loginRequired: true,
