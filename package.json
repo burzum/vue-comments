@@ -1,7 +1,7 @@
 {
 	"name": "vue-comments",
 	"version": "0.0.1",
-	"description": "Commenting Widget",
+	"description": "Commenting Widget for Vue.js",
 	"main": "index.js",
 	"scripts": {
 		"test": "npm test"
@@ -18,19 +18,19 @@
 	"author": "Florian Krämer",
 	"license": "GPL-3.0",
 	"dependencies": {
-		"@babel/core": "^7.0.0-beta.37",
-		"@babel/preset-env": "^7.0.0-beta.37",
 		"axios": "^0.17.1",
-		"babel-loader": "^8.0.0-beta.0",
-		"eslint": "^4.15.0",
-		"eslint-loader": "^1.9.0",
 		"momentjs": "^2.0.0",
 		"vue": "^2.5.13",
-		"vue-loader": "^13.7.0",
-		"vue-template-compiler": "^2.5.13",
 		"vuex": "^3.0.1"
 	},
 	"devDependencies": {
+		"@babel/core": "^7.0.0-beta.37",
+		"@babel/preset-env": "^7.0.0-beta.37",
+		"babel-loader": "^8.0.0-beta.0",
+		"eslint": "^4.15.0",
+		"eslint-loader": "^1.9.0",
+		"vue-loader": "^13.7.0",
+		"vue-template-compiler": "^2.5.13",
 		"webpack": "^3.10.0"
 	}
 }

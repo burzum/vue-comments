@@ -1,4 +1,5 @@
 import components from './main';
+import store from './store/store';
 
 const VueComments = {
 	install: function (Vue, options) {
@@ -7,6 +8,12 @@ const VueComments = {
 				Vue.component(key, component);
 			}
 		}
+
+		if (Vue.$store === undefined) {
+			throw 'Your app instance is missing a Vuex store!'
+		};
+
+		Vue.$store.registerModule('comments', store);
 	}
 };
 

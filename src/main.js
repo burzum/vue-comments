@@ -1,4 +1,3 @@
-import store from './store/store';
 import Comment from './components/comment.vue';
 import CommentsTab from './components/comments-tabs.vue';
 import CommentsWidget from './components/comments-widget.vue';

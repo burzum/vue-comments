@@ -3,12 +3,17 @@ const webpack = require("webpack");
 
 module.exports = {
 	entry: {
-		'vue-comments': './src/main.js',
-		'vue-comments.min': './src/main.js'
+		'vue-comments': './src/install.js',
+		'vue-comments.min': './src/install.js'
 	},
 	output: {
 		filename: "[name].js",
 		path: path.resolve(__dirname, '../dist')
+	},
+	externals: {
+		vuex: 'vuex',
+		vue: 'vue',
+		axios: 'axios'
 	},
 	module: {
 		rules: [
