@@ -5,7 +5,8 @@
 	"main": "dist/vue-comments.js",
 	"scripts": {
 		"test": "npm test",
-		"build": "webpack --config ./build/webpack.config.js"
+		"build": "webpack --config ./build/webpack.config.js",
+		"lint": "eslint ./src/**/*.js"
 	},
 	"keywords": [
 		"vue",
