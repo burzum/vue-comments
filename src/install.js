@@ -1,8 +1,9 @@
 import components from './main';
 import store from './store/store';
 
-const VueComments = {
-	install: function (Vue, options) {
+export function install(Vue, options, components) {
+		console.log('install is called');
+
 		for (var key in components) {
 			if (components.hasOwnProperty(key)) {
 				Vue.component(key, component);
@@ -14,7 +15,4 @@ const VueComments = {
 		};
 
 		Vue.$store.registerModule('comments', store);
-	}
 };
-
-export default VueComments;
