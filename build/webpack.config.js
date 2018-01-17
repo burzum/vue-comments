@@ -50,6 +50,13 @@ module.exports = {
 	plugins: [
 		new UglifyJsPlugin({
 			include: /\.min\.js$/,
+			uglifyOptions: {
+				ecma: 6,
+				output: {
+					comments: false,
+					beautify: false
+				},
+			}
 		})
 	]
 };
