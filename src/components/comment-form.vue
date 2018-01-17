@@ -55,7 +55,7 @@ export default {
 
 	computed: {
 		isLoggedIn: function() {
-			return this.$store.getters.isLoggedIn;
+			return this.$commentsStore.getters.isLoggedIn;
 		},
 	},
 
@@ -95,7 +95,7 @@ export default {
 			}
 
 			if (this.comment !== null) {
-				this.$store.dispatch('updateComment', this.comment2).then(() => {
+				this.$commentsStore.dispatch('updateComment', this.comment2).then(() => {
 					this.clearAndReset();
 				}).catch((error ) => {
 					this.error = 'There was a problem saving your comment';
@@ -103,7 +103,7 @@ export default {
 				return;
 			}
 
-			this.$store.dispatch('addComment', this.comment2)
+			this.$commentsStore.dispatch('addComment', this.comment2)
 				.then(() => {
 					this.clearAndReset();
 				}).catch((error ) => {

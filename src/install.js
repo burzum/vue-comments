@@ -1,18 +1,14 @@
 import components from './main';
 import store from './store/store';
+import Vuex from 'Vuex';
 
-export function install(Vue, options, components) {
-		console.log('install is called');
-
+export function install(Vue, options) {
 		for (var key in components) {
 			if (components.hasOwnProperty(key)) {
-				Vue.component(key, component);
+				console.log(key);
+				Vue.component(key, components[key]);
 			}
 		}
 
-		if (Vue.$store === undefined) {
-			throw 'Your app instance is missing a Vuex store!'
-		};
-
-		Vue.$store.registerModule('comments', store);
+		Vue.prototype.$commentsStore = new Vuex.Store(store);
 };

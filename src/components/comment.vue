@@ -40,20 +40,20 @@ export default {
 	},
 	computed: {
 		hasChildren: function() {
-			return this.$store.getters.hasChildren(
+			return this.$commentsStore.getters.hasChildren(
 				this.model,
 				this.modelId,
 				this.comment.id,
 			);
 		},
 		isLoggedIn: function() {
-			return this.$store.getters.isLoggedIn;
+			return this.$commentsStore.getters.isLoggedIn;
 		},
 		isMyComment: function () {
-			return this.$store.getters.isMyComment(this.comment);
+			return this.$commentsStore.getters.isMyComment(this.comment);
 		},
 		isLoginRequired: function() {
-			return this.$store.getters.isLoginRequired
+			return this.$commentsStore.getters.isLoginRequired
 		}
 	},
 	methods: {
@@ -67,7 +67,7 @@ export default {
 			this.formMode = 'edit';
 		},
 		deleteComment: function () {
-			return this.$store.commit('deleteComment', this.comment);
+			return this.$commentsStore.commit('deleteComment', this.comment);
 		}
 	},
 	data: function() {

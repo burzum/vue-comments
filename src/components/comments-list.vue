@@ -5,7 +5,6 @@
 				<comment :level="level" :comment="comment" :model="model" :model-id="modelId" :parent-id="parentId"></comment>
 			</li>
 		</ul>
-		//{{pagination}}
 		<p v-if="hasMore">
 			<a href="" v-on:click.prevent="loadMore()" class="btn btn-default btn-sm">Load more</a>
 		</p>
@@ -30,7 +29,7 @@ export default {
 	},
 	created: function() {
 		if (this.parentId === null) {
-			this.$store.dispatch('loadComments', {
+			this.$commentsStore.dispatch('loadComments', {
 				model: this.model,
 				modelId: this.modelId,
 				parentId: this.parentId
@@ -39,7 +38,7 @@ export default {
 	},
 	methods: {
 		loadMore: function() {
-			this.$store.dispatch('loadComments', {
+			this.$commentsStore.dispatch('loadComments', {
 				model: this.model,
 				modelId: this.modelId,
 				parentId: this.parentId,
@@ -51,21 +50,21 @@ export default {
 	},
 	computed: {
 		pagination: function() {
-			return this.$store.getters.getPagination(
+			return this.$commentsStore.getters.getPagination(
 				this.model,
 				this.modelId,
 				this.parentId
 			);
 		},
 		comments: function() {
-			return this.$store.getters.getCommentsForModel(
+			return this.$commentsStore.getters.getCommentsForModel(
 				this.model,
 				this.modelId,
 				this.parentId
 			);
 		},
 		hasMore: function() {
-			return this.$store.getters.hasMore(
+			return this.$commentsStore.getters.hasMore(
 				this.model,
 				this.modelId,
 				this.parentId
