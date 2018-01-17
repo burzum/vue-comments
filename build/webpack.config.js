@@ -1,9 +1,13 @@
 const path = require('path');
+const webpack = require("webpack");
 
 module.exports = {
-	entry: './src/app.js',
+	entry: {
+		'vue-comments': './src/app.js',
+		'vue-comments.min': './src/app.js'
+	},
 	output: {
-		filename: 'vue-comments.js',
+		filename: "[name].js",
 		path: path.resolve(__dirname, '../dist')
 	},
 	module: {
@@ -19,5 +23,12 @@ module.exports = {
 				}
 			}
 		]
-	}
+	},
+	devtool: "source-map",
+	plugins: [
+		new webpack.optimize.UglifyJsPlugin({
+			include: /\.min\.js$/,
+			minimize: true
+		})
+	]
 };

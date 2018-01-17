@@ -1,2 +1,4 @@
 /node_modules
 /dist/vue-comments.js
+/dist/vue-comments.js.map
+/dist/vue-comments.min.js

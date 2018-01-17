@@ -28,3 +28,7 @@ Inside templates:
 >
 </comments-widget>
 ```
+
+## License
+
+GPL 3.0
