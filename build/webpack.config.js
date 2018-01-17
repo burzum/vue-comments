@@ -3,8 +3,8 @@ const webpack = require("webpack");
 
 module.exports = {
 	entry: {
-		'vue-comments': './src/app.js',
-		'vue-comments.min': './src/app.js'
+		'vue-comments': './src/main.js',
+		'vue-comments.min': './src/main.js'
 	},
 	output: {
 		filename: "[name].js",
@@ -19,6 +19,15 @@ module.exports = {
 					loader: 'babel-loader',
 					options: {
 						presets: ['@babel/preset-env']
+					}
+				}
+			},
+			{
+				test: /\.vue$/,
+				loader: 'vue-loader',
+				options: {
+					loaders: {
+						js: 'babel-loader'
 					}
 				}
 			}
