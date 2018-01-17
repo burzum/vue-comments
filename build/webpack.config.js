@@ -3,13 +3,19 @@ const webpack = require("webpack");
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
 module.exports = {
+	watch: true,
+	watchOptions: {
+		ignored: /node_modules/
+	},
 	entry: {
 		'vue-comments': './src/install.js',
 		'vue-comments.min': './src/install.js'
 	},
 	output: {
 		filename: "[name].js",
-		path: path.resolve(__dirname, '../dist')
+		path: path.resolve(__dirname, '../dist'),
+		library: 'VueComments',
+		libraryTarget: 'umd'
 	},
 	externals: {
 		vuex: 'vuex',
