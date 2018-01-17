@@ -1,3 +1,5 @@
+import Vue from 'vue';
+
 export const setLastCommentTime = function(state) {
 	state.lastCommentTime = new Date();
 };
@@ -36,7 +38,7 @@ export const addComment = function(state, comment) {
 			comment.comments[i].created = new Date(comment.comments[i].created);
 			state.comments.push(comment.comments[i]);
 		}
-	};
+	}
 };
 
 export const deleteComment = function(state, comment) {
@@ -50,7 +52,7 @@ export const updateComment = function(state, editedComment) {
 		if (comment.id == editedComment.id) {
 			let index = state.comments.indexOf(comment);
 			state.comments[index] = editedComment;
-		};
+		}
 	});
 };
 

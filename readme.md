@@ -29,6 +29,21 @@ Inside templates:
 </comments-widget>
 ```
 
+## Building
+
+Build a dist
+
+```sh
+yarn build
+```
+
+Linting
+
+
+```sh
+yarn lint
+```
+
 ## License
 
 GPL 3.0
