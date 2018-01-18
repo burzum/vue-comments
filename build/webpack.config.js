@@ -18,8 +18,8 @@ module.exports = {
 		libraryTarget: 'umd'
 	},
 	externals: {
-		vuex: 'vuex',
-		vue: 'vue',
+		Vuex: 'Vuex',
+		Vue: 'Vue',
 		axios: 'axios',
 		VeeValidate: 'VeeValidate'
 	},
