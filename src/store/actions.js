@@ -13,7 +13,14 @@ export const loadComments = function(context, data) {
 			context.commit('addComment', comment)
 			// Handle child comments if there are any
 			comment.comments.forEach((comment) => {
-				context.commit('addComment', comment)
+				context.commit('addComment', comment);
+
+				if (comment.comments !== undefined && comment.comments.length > 0) {
+					for (var i in comment.comments) {
+						comment.comments[i].created = new Date(comment.comments[i].created);
+						context.commit('addComment', comment);
+					}
+				}
 			});
 
 			context.commit('updatePagination', {
@@ -27,12 +34,12 @@ export const loadComments = function(context, data) {
 };
 
 export const deleteComment = function(context, data) {
-	return api.add(
+	return api.deleteComment(
 		data.model,
 		data.foreign_key,
-		data
+		data.id
 	).then(function(result) {
-		context.commit('addComment', result.data.comment);
+		//context.commit('addComment', result.data.comment);
 	});
 };
 

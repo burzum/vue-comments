@@ -24,11 +24,8 @@ export default {
 	methods: {
 		sortBy(orderBy) {
 			this.$commentsStore.commit('setOrderBy', orderBy);
-			this.$commentsStore.commit('clearComments', {
-				model: this.model,
-				modelId: this.modelId,
-				parentId: this.parentId
-			});
+			this.$commentsStore.commit('clearComments');
+
 			this.$commentsStore.dispatch('loadComments', {
 				model: this.model,
 				modelId: this.modelId,

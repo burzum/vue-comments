@@ -1,11 +1,11 @@
-import Vue from 'vue';
+import Vue from 'Vue';
 
 export const setLastCommentTime = function(state) {
 	state.lastCommentTime = new Date();
 };
 
 export const setMaxDepth = function(state, depth) {
-	if (typeof depth !=='number') {
+	if (typeof depth !== 'number') {
 		throw 'Depth must be an integer';
 	}
 
@@ -29,22 +29,19 @@ export const setUser = function(state, user) {
 };
 
 export const addComment = function(state, comment) {
+	let comments = state.comments;
+
 	comment.created = new Date(comment.created);
+	comments.push(comment);
 
-	state.comments.push(comment);
-
-	if (comment.comments !== undefined && comment.comments.length > 0) {
-		for (var i in comment.comments) {
-			comment.comments[i].created = new Date(comment.comments[i].created);
-			state.comments.push(comment.comments[i]);
-		}
-	}
+	Vue.set(state, 'comments', comments);
 };
 
 export const deleteComment = function(state, comment) {
-	state.comments = state.comments.filter(function(commentFromList) {
+	let comments = state.comments.filter(function(commentFromList) {
 		return commentFromList.id !== comment.id;
 	});
+	Vue.set(state, 'comments', comments);
 };
 
 export const updateComment = function(state, editedComment) {
@@ -62,17 +59,6 @@ export const updatePagination = function(state, data) {
 	Vue.set(state.pagination, key, data.pagination);
 };
 
-export const clearComments = function(state, data) {
-	let comments = state.comments;
-
-	comments.forEach((comment, index) => {
-		if (comment.model == data.model
-			&& comment.foreign_key == data.modelId
-			&& comment.parent_id == data.parentId
-		) {
-			comments.splice(index, 1);
-		}
-	});
-
-	Vue.set(state, 'comments', comments);
+export const clearComments = function(state) {
+	Vue.set(state, 'comments', []);
 };

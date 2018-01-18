@@ -55,7 +55,7 @@ export const hasMore = function(state) {
 };
 
 export const getCommentsForModel = function(state) {
-	return function(model, modelId, parentId) {
+	return function(model, modelId, parentId = null) {
 		let comments = state.comments.filter(function(comment) {
 			// Has to be weak typed, fucking dynamic types
 			return comment.model == model
