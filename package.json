@@ -44,7 +44,6 @@
 		"vue-loader": "^13.7.0",
 		"vue-server-renderer": "^2.5.13",
 		"vue-template-compiler": "^2.5.13",
-		"webpack": "^3.10.0",
 		"babel-polyfill": "^6.26.0",
 		"babel-register": "^6.26.0",
 		"css-loader": "^0.28.9",
