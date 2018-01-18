@@ -27,12 +27,15 @@
 		"vuex": "^3.0.1"
 	},
 	"devDependencies": {
-		"@babel/core": "^7.0.0-beta.37",
-		"@babel/preset-env": "^7.0.0-beta.37",
 		"@vue/test-utils": "^1.0.0-beta.10",
-		"babel-eslint": "^8.2.1",
+		"babel-core": "^6.26.0",
+		"babel-eslint": "7",
 		"babel-jest": "^22.1.0",
-		"babel-loader": "^8.0.0-beta.0",
+		"babel-loader": "^7.1.2",
+		"babel-polyfill": "^6.26.0",
+		"babel-preset-env": "^1.6.1",
+		"babel-register": "^6.26.0",
+		"css-loader": "^0.28.9",
 		"eslint": "^4.15.0",
 		"eslint-loader": "^1.9.0",
 		"eslint-plugin-vue": "^4.2.0",
@@ -44,10 +47,6 @@
 		"vue-loader": "^13.7.0",
 		"vue-server-renderer": "^2.5.13",
 		"vue-template-compiler": "^2.5.13",
-		"babel-polyfill": "^6.26.0",
-		"babel-register": "^6.26.0",
-		"css-loader": "^0.28.9",
-		"vue-test-utils": "^1.0.0-beta.11",
 		"webpack": "^3.10.0"
 	},
 	"jest": {
