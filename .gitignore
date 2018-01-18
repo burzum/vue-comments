@@ -6,3 +6,6 @@
 .idea
 /yarn-error.log
 /coverage
+/selenium-debug.log
+
+
