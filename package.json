@@ -22,9 +22,6 @@
 	"license": "GPL-3.0",
 	"dependencies": {
 		"axios": "^0.17.1",
-		"babel-polyfill": "^6.26.0",
-		"css-loader": "^0.28.9",
-		"moment": "^2.20.1",
 		"vee-validate": "^2.0.3",
 		"vue": "^2.5.13",
 		"vuex": "^3.0.1"
@@ -42,6 +39,9 @@
 		"uglifyjs-webpack-plugin": "^1.1.6",
 		"vue-loader": "^13.7.0",
 		"vue-template-compiler": "^2.5.13",
-		"webpack": "^3.10.0"
+		"webpack": "^3.10.0",
+		"babel-polyfill": "^6.26.0",
+		"babel-register": "^6.26.0",
+		"css-loader": "^0.28.9"
 	}
 }

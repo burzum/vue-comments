@@ -2,30 +2,34 @@
 
 Thought as a general purpose comments widget based on Vue.js. Similar to Facebooks comments or Disqus.
 
+**THIS IS WORK IN PROGRESS!**
+
 ## Usage
 
-Register the comments store module within your global vuex store:
+Load the VueComments plugin and VeeValidate, it will register everything that is required.
 
 ```js
-import commentsModule from './store/store';
-import Vuex from 'vuex';
+Vue.use(VeeValidate);
+Vue.use(VueComments);
 
-const store = new Vuex.Store({
-	modules: {
-		comments: commentsModule,
-	}
+const store = new Vuex.Store();
+
+var vueApp = new Vue({
+	el: '#vue-app',
+	store,
+	data: {}
 });
 
 ```
 
-Inside templates:
+Inside your templates:
 
 
 ```html
+<h3>Comments</h3>
 <comments-widget
-	model="Posts"
-	model-id="1"
->
+	model="SocialObject"
+	model-id="1">
 </comments-widget>
 ```
 
