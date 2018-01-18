@@ -4,8 +4,8 @@
 	"description": "Commenting Widget for Vue.js",
 	"main": "dist/vue-comments.js",
 	"scripts": {
-		"test": "npm test",
 		"test:unit": "jest",
+		"test:e2e": "node test/e2e/runner.js",
 		"build": "webpack --config ./build/webpack.config.js",
 		"lint": "eslint ./src/**/*.js ./src/**/*.vue"
 	},
