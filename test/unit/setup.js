@@ -1,5 +1,5 @@
-import 'babel-polyfill';
-import Vue from 'vue/dist/vue.common.js';
-import Vuex from '../../dist/vuex.common.js';
+import 'babel-polyfill'
+import Vue from '../../node_modules/vue/dist/vue.common'
+import Vuex from '../../node_modules/vuex/dist/vuex.common'
 
-Vue.use(Vuex)
+Vue.use(Vuex);
