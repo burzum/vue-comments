@@ -5,3 +5,4 @@
 /dist/vue-comments.min.js.map
 .idea
 /yarn-error.log
+/coverage
