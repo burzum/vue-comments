@@ -43,6 +43,15 @@ module.exports = {
 						js: 'babel-loader'
 					}
 				}
+			},
+			{
+				test: /\.(html)$/,
+				use: {
+					loader: 'html-loader',
+					options: {
+						attrs: [':data-src']
+					}
+				}
 			}
 		]
 	},
