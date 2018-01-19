@@ -1,5 +1,5 @@
 <template>
-	<form class="form comment-form" v-on:submit.prevent="validateBeforeSubmit()" >
+	<form class="form comment-form" v-on:submit.prevent="validateBeforeSubmit()" v-if="!isLoginRequired || isLoggedIn" >
 		<div v-if="!isLoggedIn" class="form-group" :class="{'input': true, 'has-error': errors.has('name') }">
 			<label>Name</label>
 			<input v-validate.disabled="'required'" name="name" type="text" v-model="comment2.name" class="form-control"/>
@@ -14,11 +14,10 @@
 			<div v-show="errors.has('body')" class="has-error">{{ errors.first('body') }}</div>
 		</div>
 		<div v-if="error" class="alert alert-danger fade in">
-			//<a href="#" class="close" data-dismiss="alert">&times;</a>
 			<p>{{error}}</p>
 		</div>
 		<input type="submit" value="submit" class="btn btn-primary" />
-		'&nbsp;
+		&nbsp;
 		<input type="submit" value="cancel" v-on:click.prevent="cancel(); errors.clear();" class="btn btn-default" />
 	</form>
 </template>
@@ -57,6 +56,9 @@ export default {
 		isLoggedIn: function() {
 			return this.$commentsStore.getters.isLoggedIn;
 		},
+		isLoginRequired: function() {
+			return this.$commentsStore.getters.getConfig('loginRequired');
+		}
 	},
 
 	methods: {

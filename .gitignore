@@ -5,3 +5,8 @@
 /dist/vue-comments.min.js.map
 .idea
 /yarn-error.log
+/coverage
+/selenium-debug.log
+/test/unit/coverage/*
+
+

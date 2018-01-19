@@ -4,10 +4,11 @@
 	"description": "Commenting Widget for Vue.js",
 	"main": "dist/vue-comments.js",
 	"scripts": {
-		"test": "npm test",
-		"test:unit": "jasmine JASMINE_CONFIG_PATH=./test/unit/jasmine.json",
-		"build": "webpack --config ./build/webpack.config.js",
-		"lint": "eslint ./src/**/*.js ./src/**/*.vue"
+		"test:coverage": "./node_modules/.bin/jest --config ./build/jest.config.coverage.js",
+		"test:unit": "./node_modules/.bin/jest",
+		"test:e2e": "./node_modules/.bin/nightwatch --config ./nightwatch.conf.js",
+		"build": "./node_modules/.bin/webpack --config ./build/webpack.config.js",
+		"lint": "./node_modules/.bin/eslint ./src/**/*.js ./src/**/*.vue"
 	},
 	"keywords": [
 		"vue",
@@ -22,26 +23,55 @@
 	"license": "GPL-3.0",
 	"dependencies": {
 		"axios": "^0.17.1",
+		"jest-vue": "^0.8.2",
 		"vee-validate": "^2.0.3",
 		"vue": "^2.5.13",
 		"vuex": "^3.0.1"
 	},
 	"devDependencies": {
-		"@babel/core": "^7.0.0-beta.37",
-		"@babel/preset-env": "^7.0.0-beta.37",
 		"@vue/test-utils": "^1.0.0-beta.10",
-		"babel-eslint": "^8.2.1",
-		"babel-loader": "^8.0.0-beta.0",
+		"babel-core": "^6.26.0",
+		"babel-eslint": "7",
+		"babel-jest": "^22.1.0",
+		"babel-loader": "^7.1.2",
+		"babel-polyfill": "^6.26.0",
+		"babel-preset-env": "^1.6.1",
+		"babel-register": "^6.26.0",
+		"chromedriver": "^2.34.1",
+		"css-loader": "^0.28.9",
 		"eslint": "^4.15.0",
 		"eslint-loader": "^1.9.0",
 		"eslint-plugin-vue": "^4.2.0",
+		"html-loader": "^0.5.5",
+		"istanbul": "^0.4.5",
 		"jasmine": "^2.8.0",
+		"jest": "^22.1.3",
+		"jest-serializer-vue": "^0.3.0",
+		"nightwatch": "^0.9.19",
+		"selenium-server": "^3.8.1",
 		"uglifyjs-webpack-plugin": "^1.1.6",
+		"vue-jest": "^1.4.0",
 		"vue-loader": "^13.7.0",
+		"vue-server-renderer": "^2.5.13",
 		"vue-template-compiler": "^2.5.13",
-		"webpack": "^3.10.0",
-		"babel-polyfill": "^6.26.0",
-		"babel-register": "^6.26.0",
-		"css-loader": "^0.28.9"
+		"webpack": "^3.10.0"
+	},
+	"jest": {
+		"moduleFileExtensions": [
+			"js",
+			"json",
+			"vue"
+		],
+		"transform": {
+			"^.+\\.js$": "<rootDir>/node_modules/babel-jest",
+			".*\\.(vue)$": "<rootDir>/node_modules/vue-jest"
+		},
+		"moduleNameMapper": {
+			"^@/(.*)$": "<rootDir>/src/$1"
+		},
+		"snapshotSerializers": [
+			"<rootDir>/node_modules/jest-serializer-vue"
+		],
+		"mapCoverage": true
 	}
 }

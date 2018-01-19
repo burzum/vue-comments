@@ -18,8 +18,8 @@ module.exports = {
 		libraryTarget: 'umd'
 	},
 	externals: {
-		vuex: 'vuex',
-		vue: 'vue',
+		Vuex: 'Vuex',
+		Vue: 'Vue',
 		axios: 'axios',
 		VeeValidate: 'VeeValidate'
 	},
@@ -31,7 +31,7 @@ module.exports = {
 				use: {
 					loader: 'babel-loader',
 					options: {
-						presets: ['@babel/preset-env']
+						presets: ['env']
 					}
 				}
 			},
@@ -41,6 +41,15 @@ module.exports = {
 				options: {
 					loaders: {
 						js: 'babel-loader'
+					}
+				}
+			},
+			{
+				test: /\.(html)$/,
+				use: {
+					loader: 'html-loader',
+					options: {
+						attrs: [':data-src']
 					}
 				}
 			}
