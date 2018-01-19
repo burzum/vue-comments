@@ -2,7 +2,9 @@
 	<div class="comment">
 		<div class="header">
 			<div v-if="!comment.user">
-				<span class="name">{{comment.name}}</span> wrote on {{comment.created}}:
+				<span class="name">{{comment.name}}</span>
+				wrote on
+				<span class="time">{{comment.created}}</span>:
 			</div>
 			<div v-else>
 				<span class="name">{{comment.user.username}}</span> wrote on {{comment.created}}:
@@ -11,7 +13,7 @@
 		<div class="body">
 			{{comment.body}}
 		</div>
-		<div>
+		<div class="footer">
 			<a href="#" v-on:click.prevent="reply()" v-if="!isLoginRequired || isLoggedIn">reply</a>
 			<span v-if="isMyComment">
 				 &bull;
@@ -20,8 +22,8 @@
 				<a href="#" v-on:click.prevent="deleteComment()">delete</a>
 			</span>
 		</div>
-		<comment-form :model="model" :model-id="modelId" :comment="comment" v-if="formMode === 'edit'" @closeForm="closeForm"></comment-form>
-		<comment-form :model="model" :model-id="modelId" :parent-id="comment.id" :reply-to="comment" v-if="formMode === 'reply'" @closeForm="closeForm"></comment-form>
+		<comment-form :model="model" :model-id="modelId" :comment="comment" v-if="formMode === 'edit' && !isLoginRequired" @closeForm="closeForm"></comment-form>
+		<comment-form :model="model" :model-id="modelId" :parent-id="comment.id" :reply-to="comment" v-if="formMode === 'reply' && !isLoginRequired" @closeForm="closeForm"></comment-form>
 		<comments-list :level="level" v-if="hasChildren" :model="model" :model-id="modelId" :parent-id="comment.id"></comments-list>
 	</div>
 </template>
@@ -53,7 +55,7 @@ export default {
 			return this.$commentsStore.getters.isMyComment(this.comment);
 		},
 		isLoginRequired: function() {
-			return this.$commentsStore.getters.isLoginRequired
+			return this.$commentsStore.getters.getConfig('loginRequired');
 		}
 	},
 	methods: {

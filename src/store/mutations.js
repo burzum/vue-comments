@@ -1,5 +1,9 @@
 import Vue from 'Vue';
 
+export const setConfig = function(state, config) {
+	Vue.set(state, 'config', Object.assign({}, state.config, config));
+};
+
 export const setLastCommentTime = function(state) {
 	state.lastCommentTime = new Date();
 };

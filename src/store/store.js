@@ -10,14 +10,16 @@ import * as mutations from './mutations';
 const module = {
 	strict: true,
 	state: {
-		loginRequired: true,
 		lastCommentTime: null,
-		threshold: 60,
-		maxDepth: 1,
 		orderBy: 'oldest',
 		comments: [],
 		pagination: {},
 		user: null,
+		config: {
+			threshold: 60,
+			maxDepth: 1,
+			loginRequired: false
+		}
 	},
 	actions: actions,
 	mutations: mutations,

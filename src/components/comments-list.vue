@@ -6,7 +6,7 @@
 			</li>
 		</ul>
 		<p v-if="hasMore">
-			<a href="" v-on:click.prevent="loadMore()" class="btn btn-default btn-sm">Load more</a>
+			<a href="" v-on:click.prevent="loadMore()" class="btn btn-default btn-sm btn-load-more">Load more</a>
 		</p>
 	</div>
 </template>

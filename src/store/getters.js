@@ -2,12 +2,23 @@ export const getUser = function(state) {
 	return state.user;
 };
 
-export const isLoginRequired = function(state) {
-	return state.loginRequired;
-};
-
 export const isLoggedIn = function(state) {
 	return state.user !== undefined && state.user !== null;
+};
+
+export const getConfig = function(state) {
+	return function(key = null) {
+		if (key === null) {
+			return state.config;
+		}
+
+		if (typeof key !== 'string') {
+			console.log('Comments config key must be a string.');
+			return;
+		}
+
+		return state.config[key];
+	}
 };
 
 export const isMyComment = function (state) {
