@@ -1,7 +1,7 @@
 module.exports = {
 	verbose: true,
 	collectCoverage: true,
-	coverageDirectory: '<rootDir>/test/coverage',
+	coverageDirectory: '<rootDir>/test/unit/coverage',
 	testRegex: "(/__tests__/.*|(\\.|/)(test|spec))\\.jsx?$",
 	rootDir: '../',
 	preset: null,
