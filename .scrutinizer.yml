@@ -11,5 +11,5 @@ build:
             -
                 command: './node_modules/.bin/jest --config ./build/jest.config.coverage.js'
                 coverage:
-                    file: 'test/unit/coverage/clover.xml'
+                    file: './test/unit/coverage/clover.xml'
                     format: 'clover'
