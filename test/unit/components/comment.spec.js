@@ -1,5 +1,5 @@
 import { mount, shallow } from '@vue/test-utils'
-import Comment from '@/components/comment.vue';
+import Comment from '../../../src/components/comment.vue';
 
 const createCmp = propsData => mount(Comment, { propsData })
 

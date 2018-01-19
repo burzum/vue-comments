@@ -3,3 +3,13 @@ checks:
 filter:
     excluded_paths:
         - test/*
+build:
+    environment:
+        node: '8.4.0'
+    tests:
+        override:
+            -
+                command: 'istanbul cover --report clover test.js'
+                coverage:
+                    file: 'coverage/clover.xml'
+                    format: 'clover'
