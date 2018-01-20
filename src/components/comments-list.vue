@@ -5,8 +5,11 @@
 				<comment :level="level" :comment="comment" :model="model" :model-id="modelId" :parent-id="parentId"></comment>
 			</li>
 		</ul>
-		<p v-if="hasMore">
+		<p v-if="hasMore && !loading">
 			<a href="" v-on:click.prevent="loadMore()" class="btn btn-default btn-sm btn-load-more">Load more</a>
+		</p>
+		<p class="loading-comments" v-if="loading">
+			Loading...
 		</p>
 	</div>
 </template>
@@ -29,22 +32,29 @@ export default {
 	},
 	created: function() {
 		if (this.parentId === null) {
-			this.$commentsStore.dispatch('loadComments', {
-				model: this.model,
-				modelId: this.modelId,
-				parentId: this.parentId
-			});
+			this.loadComments();
 		}
 	},
 	methods: {
-		loadMore: function() {
-			this.$commentsStore.dispatch('loadComments', {
+		loadComments(params = {}) {
+			this.loading = true;
+
+			let dafaults = {
 				model: this.model,
 				modelId: this.modelId,
 				parentId: this.parentId,
-				params: {
-					page: this.pagination.page + 1
-				}
+			};
+
+			return this.$commentsStore.dispatch('loadComments', Object.assign({}, dafaults, params))
+				.then(() => {
+					this.loading = false;
+				}).catch(() => {
+					this.loading = false;
+				});
+		},
+		loadMore: function() {
+			this.loadComments({
+				page: this.pagination.page + 1
 			});
 		}
 	},
@@ -73,7 +83,8 @@ export default {
 	},
 	data: function() {
 		return {
-			initialized: false
+			initialized: false,
+			loading: false
 		}
 	}
 };

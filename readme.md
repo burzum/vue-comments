@@ -9,6 +9,11 @@ Thought as a general purpose comments widget based on Vue.js. Similar to Faceboo
 Load the VueComments plugin and VeeValidate, it will register everything that is required.
 
 ```js
+import Vue from 'vue';
+import Vuex from 'vuex';
+import VeeValidate from 'vee-validate';
+import VueComments from 'vue-comments';
+
 Vue.use(VeeValidate);
 Vue.use(VueComments);
 
@@ -22,7 +27,7 @@ var vueApp = new Vue({
 
 ```
 
-Inside your templates:
+Use it inside your applications markup:
 
 
 ```html
