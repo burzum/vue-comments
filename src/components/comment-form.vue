@@ -2,15 +2,16 @@
 	<form class="form comment-form" v-on:submit.prevent="validateBeforeSubmit()" v-if="!isLoginRequired || isLoggedIn" >
 		<div v-if="!isLoggedIn" class="form-group" :class="{'input': true, 'has-error': errors.has('name') }">
 			<label>Name</label>
-			<input v-validate.disabled="'required'" name="name" type="text" v-model="comment2.name" class="form-control"/>
+			<input v-validate.disabled="'required'" name="name" type="text" v-model="comment2.name" class="form-control" data-vv-validate-on="none"/>
 			<div v-show="errors.has('name')" class="has-error">{{ errors.first('name') }}</div>
 		</div>
 		<div v-if="!isLoggedIn" class="form-group">
 			<label>Email</label>
-			<input v-validate.disabled="'email'" name="email" type="text" v-model="comment2.email" class="form-control"/>
+			<input v-validate.disabled="'email|required'" name="email" type="text" v-model="comment2.email" class="form-control" data-vv-validate-on="none"/>
+			<div v-show="errors.has('email')" class="has-error">{{ errors.first('email') }}</div>
 		</div>
 		<div class="form-group">
-			<textarea v-validate.disabled="'required'" v-model="comment2.body" class="form-control" name="body"></textarea>
+			<textarea v-validate.disabled="'required'" v-model="comment2.body" class="form-control" name="body" data-vv-validate-on="none"></textarea>
 			<div v-show="errors.has('body')" class="has-error">{{ errors.first('body') }}</div>
 		</div>
 		<div v-if="error" class="alert alert-danger fade in">
@@ -64,13 +65,11 @@ export default {
 	methods: {
 		newComment() {
 			return {
-				//id: Math.floor(Math.random() * 100000000000) + 1,
 				body: '',
 				name: '',
 				model: this.model,
 				foreign_key: this.modelId,
 				parent_id: this.parentId === undefined ? null : this.parentId,
-				//created: new Date()
 			}
 		},
 		validateBeforeSubmit() {
