@@ -10,18 +10,14 @@ Load the VueComments plugin and VeeValidate, it will register everything that is
 
 ```js
 import Vue from 'vue';
-import Vuex from 'vuex';
 import VeeValidate from 'vee-validate';
 import VueComments from 'vue-comments';
 
 Vue.use(VeeValidate);
 Vue.use(VueComments);
 
-const store = new Vuex.Store();
-
 var vueApp = new Vue({
 	el: '#vue-app',
-	store,
 	data: {}
 });
 

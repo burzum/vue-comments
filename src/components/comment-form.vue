@@ -75,7 +75,6 @@ export default {
 		validateBeforeSubmit() {
 			this.$validator.validateAll().then((result) => {
 				if (result) {
-					console.log('TEST');
 					this.submit();
 				}
 			});

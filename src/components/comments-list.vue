@@ -39,13 +39,14 @@ export default {
 		loadComments(params = {}) {
 			this.loading = true;
 
-			let dafaults = {
+			let requestParams = {
 				model: this.model,
 				modelId: this.modelId,
 				parentId: this.parentId,
+				params: params
 			};
 
-			return this.$commentsStore.dispatch('loadComments', Object.assign({}, dafaults, params))
+			return this.$commentsStore.dispatch('loadComments', requestParams)
 				.then(() => {
 					this.loading = false;
 				}).catch(() => {
