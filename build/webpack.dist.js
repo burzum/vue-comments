@@ -3,7 +3,7 @@ const webpack = require("webpack");
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
 module.exports = {
-	watch: true,
+	watch: false,
 	watchOptions: {
 		ignored: /node_modules/
 	},
@@ -40,7 +40,10 @@ module.exports = {
 				loader: 'vue-loader',
 				options: {
 					loaders: {
-						js: 'babel-loader'
+						js: 'babel-loader',
+						options: {
+							presets: ['env']
+						}
 					}
 				}
 			},

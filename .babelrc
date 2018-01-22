@@ -1,12 +1,25 @@
 {
-  "presets": [
-	["env", { "modules": false }]
-  ],
-  "env": {
-	"test": {
-	  "presets": [
-		["env", { "targets": { "node": 8 }}]
-	  ]
+	"presets": [
+		[
+			"es2015",
+			"env",
+			{
+				"modules": false
+			}
+		]
+	],
+	"env": {
+		"test": {
+			"presets": [
+				[
+					"env",
+					{
+						"targets": {
+							"node": 8
+						}
+					}
+				]
+			]
+		}
 	}
-  }
 }

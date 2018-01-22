@@ -813,6 +813,16 @@ babel-preset-vue@^1.2.1:
     babel-plugin-syntax-jsx "^6.18.0"
     babel-plugin-transform-vue-jsx "^3.5.0"
 
+babel-preset-vue@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/babel-preset-vue/-/babel-preset-vue-2.0.0.tgz#441f7cf75836a0fa908a5df62bc243f8f9109d2c"
+  dependencies:
+    babel-helper-vue-jsx-merge-props "^2.0.2"
+    babel-plugin-jsx-event-modifiers "^2.0.2"
+    babel-plugin-jsx-v-model "^2.0.1"
+    babel-plugin-syntax-jsx "^6.18.0"
+    babel-plugin-transform-vue-jsx "^3.5.0"
+
 babel-register@^6.26.0:
   version "6.26.0"
   resolved "https://registry.yarnpkg.com/babel-register/-/babel-register-6.26.0.tgz#6ed021173e2fcb486d7acb45c6009a856f647071"
@@ -825,7 +835,7 @@ babel-register@^6.26.0:
     mkdirp "^0.5.1"
     source-map-support "^0.4.15"
 
-babel-runtime@^6.18.0, babel-runtime@^6.20.0, babel-runtime@^6.22.0, babel-runtime@^6.26.0:
+babel-runtime@^6.18.0, babel-runtime@^6.20.0, babel-runtime@^6.22.0, babel-runtime@^6.25.0, babel-runtime@^6.26.0:
   version "6.26.0"
   resolved "https://registry.yarnpkg.com/babel-runtime/-/babel-runtime-6.26.0.tgz#965c7058668e82b55d7bfe04ff2337bc8b5647fe"
   dependencies:
@@ -1382,6 +1392,12 @@ consolidate@^0.14.0:
 constants-browserify@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/constants-browserify/-/constants-browserify-1.0.0.tgz#c20b96d8c617748aaf1c16021760cd27fcb8cb75"
+
+constitute@^1.6.2:
+  version "1.6.2"
+  resolved "https://registry.yarnpkg.com/constitute/-/constitute-1.6.2.tgz#ba9f2b33f1510ac4d1ac3ddc8d4ae7ce5a28aa32"
+  dependencies:
+    clone "^1.0.2"
 
 content-type-parser@^1.0.1:
   version "1.0.2"
@@ -4946,6 +4962,10 @@ recast@~0.11.12:
     private "~0.1.5"
     source-map "~0.5.0"
 
+recursive-iterator@^3.3.0:
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/recursive-iterator/-/recursive-iterator-3.3.0.tgz#4e498ce6227d8c42b2e2d496b296bc866c134514"
+
 reduce-css-calc@^1.2.6:
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/reduce-css-calc/-/reduce-css-calc-1.3.0.tgz#747c914e049614a4c9cfbba629871ad1d2927716"
@@ -5973,6 +5993,16 @@ webidl-conversions@^4.0.1, webidl-conversions@^4.0.2:
   version "4.0.2"
   resolved "https://registry.yarnpkg.com/webidl-conversions/-/webidl-conversions-4.0.2.tgz#a855980b1f0b6b359ba1d5d9fb39ae941faa63ad"
 
+webpack-config@^7.5.0:
+  version "7.5.0"
+  resolved "https://registry.yarnpkg.com/webpack-config/-/webpack-config-7.5.0.tgz#53c2c148fc7a3e377652fcea1e682015282047de"
+  dependencies:
+    babel-runtime "^6.25.0"
+    constitute "^1.6.2"
+    lodash "^4.17.4"
+    recursive-iterator "^3.3.0"
+    yargs-parser "^8.0.0"
+
 webpack-sources@^1.0.1, webpack-sources@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/webpack-sources/-/webpack-sources-1.1.0.tgz#a101ebae59d6507354d71d8013950a3a8b7a5a54"
@@ -6119,7 +6149,7 @@ yargs-parser@^7.0.0:
   dependencies:
     camelcase "^4.1.0"
 
-yargs-parser@^8.1.0:
+yargs-parser@^8.0.0, yargs-parser@^8.1.0:
   version "8.1.0"
   resolved "https://registry.yarnpkg.com/yargs-parser/-/yargs-parser-8.1.0.tgz#f1376a33b6629a5d063782944da732631e966950"
   dependencies:
