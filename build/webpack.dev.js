@@ -1,10 +1,5 @@
-import webpack from 'webpack';
-import Config from 'webpack-config';
+const config = require('./webpack.dist.js');
 
-export default new Config().extend({
-	'build/webpack.dist.js': config => {
-		return config;
-	}
-}).merge({
-	watch: true
-});
+config.watch = true;
+
+module.exports = config;

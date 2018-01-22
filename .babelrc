@@ -2,24 +2,7 @@
 	"presets": [
 		[
 			"es2015",
-			"env",
-			{
-				"modules": false
-			}
+			"env"
 		]
-	],
-	"env": {
-		"test": {
-			"presets": [
-				[
-					"env",
-					{
-						"targets": {
-							"node": 8
-						}
-					}
-				]
-			]
-		}
-	}
+	]
 }

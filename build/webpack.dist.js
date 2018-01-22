@@ -15,7 +15,6 @@ module.exports = {
 		filename: "[name].js",
 		path: path.resolve(__dirname, '../dist'),
 		library: 'VueComments',
-		libraryTarget: 'umd'
 	},
 	externals: {
 		Vuex: 'Vuex',
@@ -63,10 +62,12 @@ module.exports = {
 		new UglifyJsPlugin({
 			include: /\.min\.js$/,
 			uglifyOptions: {
+				compress: true,
+				mangle: true,
 				ecma: 6,
 				output: {
 					comments: false,
-					beautify: false
+					beautify: false,
 				},
 			}
 		})
