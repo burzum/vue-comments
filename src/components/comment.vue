@@ -16,9 +16,9 @@
 		<div class="footer">
 			<a href="#" v-on:click.prevent="reply()" v-if="!isLoginRequired || isLoggedIn">reply</a>
 			<span v-if="isMyComment">
-				 &bull;
+				&nbsp;&bull;&nbsp;
 				<a href="#" v-on:click.prevent="editComment()">edit </a>
-				 &bull;
+				&nbsp;&bull;&nbsp;
 				<a href="#" v-on:click.prevent="deleteComment()">delete</a>
 			</span>
 		</div>
