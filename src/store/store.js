@@ -1,6 +1,7 @@
 import * as actions from './actions';
 import * as getters from './getters';
 import * as mutations from './mutations';
+import * as state from './state';
 
 /**
  * The comments store module for Vuex
@@ -9,20 +10,7 @@ import * as mutations from './mutations';
  */
 const module = {
 	strict: true,
-	state: {
-		lastCommentTime: null,
-		orderBy: 'oldest',
-		comments: [],
-		pagination: {},
-		user: null,
-		config: {
-			threshold: 60,
-			maxDepth: 1,
-			loginRequired: false,
-			allowEditing: true,
-			allowDeleting: true
-		}
-	},
+	state: state,
 	actions: actions,
 	mutations: mutations,
 	getters: getters

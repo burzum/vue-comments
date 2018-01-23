@@ -6,6 +6,7 @@
 	"scripts": {
 		"test:coverage": "./node_modules/.bin/jest --config ./build/jest.config.coverage.js",
 		"test:unit": "./node_modules/.bin/jest",
+		"test:unitwatch": "./node_modules/.bin/jest --watch",
 		"test:e2e": "./node_modules/.bin/nightwatch --config ./nightwatch.conf.js",
 		"build": "./node_modules/.bin/webpack --config ./build/webpack.dist.js",
 		"watch": "./node_modules/.bin/webpack --config ./build/webpack.dev.js",

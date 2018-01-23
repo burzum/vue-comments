@@ -1,22 +1,46 @@
 import { mount, shallow } from '@vue/test-utils'
+import commentsStore from '@/store/store';
 import Comment from '@/components/comment.vue';
-import axios from 'axios';
 import Vue from 'vue';
 import Vuex from 'vuex';
 import VeeValidate from 'vee-validate';
-import commentsStore from '@/store/store';
+import state from '@/store/state';
+import comments from '../../fixtures/comments';
 
-describe('commen.vue', () => {
-	let cmp;
+describe('Comment Component', () => {
+
+	let $commentsStore;
+
+	Vue.use(Vuex);
+	Vue.use(VeeValidate);
 
 	beforeEach(() => {
-		Vue.use(VeeValidate);
-
-		//cmp = shallow(Comment, {});
-		//cmp.$commentsStore = commentsStore;
+		$commentsStore = commentsStore;
+		$commentsStore.getters.getConfig = jest.fn();
 	});
 
 	it('equals messages to ["Cat"]', () => {
-		//console.log(cmp);
+		const wrapper = shallow(Comment, {
+			propsData: {
+				comment: comments[0],
+				modelId: 1,
+				model: 'Posts'
+			},
+			mocks: {
+				$commentsStore
+			}
+		});
+
+		expect(wrapper.vm._data.formMode).toEqual(false);
+
+		wrapper.find('.edit-btn').trigger('click');
+		expect(wrapper.vm._data.formMode).toEqual('edit');
+
+		wrapper.find('.reply-btn').trigger('click');
+		expect(wrapper.vm._data.formMode).toEqual('reply');
+
+		wrapper.vm.closeForm()
+		expect(wrapper.vm._data.formMode).toEqual(false);
 	});
+
 });
