@@ -3,6 +3,9 @@ checks:
 filter:
     excluded_paths:
         - test/*
+        - node_modules/*
+        - build/*
+        - dist/*
 build:
     environment:
         node: '8.5.0'
