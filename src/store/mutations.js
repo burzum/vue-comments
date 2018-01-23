@@ -1,4 +1,4 @@
-import Vue from 'Vue';
+import Vue from 'vue';
 
 export const setConfig = function(state, config) {
 	Vue.set(state, 'config', Object.assign({}, state.config, config));
