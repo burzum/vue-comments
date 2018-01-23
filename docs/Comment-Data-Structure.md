@@ -2,7 +2,7 @@
 
 The current structure that is used is this:
 
-```js
+```json
 {
 	id: 1,
 	name: 'anonymous',
@@ -12,7 +12,11 @@ The current structure that is used is this:
 	parent_id: null,
 	model: 'Posts',
 	foreign_key: 1,
-	user_id: 1
+	user_id: 1,
+	user: {
+		id: 1,
+		username: 'foobar'
+	}
 }
 ```
 
@@ -22,4 +26,7 @@ The current structure that is used is this:
 * **parent_id**: The parent comment id, required if you want nested comments.
 * **model**: An identifier of the domain of the comment, usually the domain model or a database table / object name.
 * **foreign_key**: The id of the record inside the model you're commenting on
-* **created**: The time the comment was created
+* **created**: The time the comment was created^^
+* **user:** 
+  * **id**: The id of the user
+  * **username**: The username of the user
