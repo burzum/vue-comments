@@ -5,11 +5,16 @@ filter:
         - test/*
 build:
     environment:
-        node: '8.4.0'
+        node: '8.5.0'
+    project_setup:
+        before:
+            - npm install yarn -g
     tests:
         override:
             -
-                command: 'npm run test:coverage'
+                command: 'yarn install'
+            -
+                command: 'yarn run test:coverage'
                 coverage:
                     file: './test/unit/coverage/clover.xml'
                     format: 'clover'
