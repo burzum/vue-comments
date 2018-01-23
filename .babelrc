@@ -4,5 +4,14 @@
 			"env",
 			"vue"
 		]
+	],
+	"plugins": [
+		[
+			"transform-runtime",
+			{
+				"polyfill": false,
+				"regenerator": true
+			}
+		]
 	]
 }
