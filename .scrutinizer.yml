@@ -8,7 +8,7 @@ filter:
         - dist/*
 build:
     environment:
-        node: '8.5.0'
+        node: '8.9.4'
     project_setup:
         before:
             - npm install yarn -g
