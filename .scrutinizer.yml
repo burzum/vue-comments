@@ -9,13 +9,8 @@ filter:
 build:
     environment:
         node: '8.9.4'
-    project_setup:
-        before:
-            - npm install yarn -g
     tests:
         override:
-            -
-                command: 'yarn install'
             -
                 command: 'yarn run test:coverage'
                 coverage:

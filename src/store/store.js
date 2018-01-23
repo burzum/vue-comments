@@ -18,7 +18,9 @@ const module = {
 		config: {
 			threshold: 60,
 			maxDepth: 1,
-			loginRequired: false
+			loginRequired: false,
+			allowEditing: true,
+			allowDeleting: true
 		}
 	},
 	actions: actions,
