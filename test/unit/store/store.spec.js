@@ -1,4 +1,4 @@
-import commentsStore from '../../../src/store/store';
+import commentsStore from '@/store/store';
 
 describe('commensStore', () => {
 	let store;
