@@ -5,8 +5,11 @@
 				<comment v-bind="key" :level="level" :comment="comment" :model="model" :model-id="modelId" :parent-id="parentId"></comment>
 			</li>
 		</ul>
+		<br />
 		<p v-if="hasMore && !loading">
-			<a href="" v-on:click.prevent="loadMore()" class="btn btn-default btn-sm btn-load-more">Load more</a>
+			<a href="" v-on:click.prevent="loadMore()" class="btn btn-default btn-sm btn-load-more">
+				Load more
+			</a>
 		</p>
 		<p class="loading-comments" v-if="loading">
 			Loading...
