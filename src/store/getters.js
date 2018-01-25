@@ -6,6 +6,24 @@ export const isLoggedIn = function(state) {
 	return state.user !== undefined && state.user !== null;
 };
 
+/**
+ * Checks for the threshold if the user can post again or still has to wait
+ *
+ * @return boolean
+ */
+export const canPostAgain = function(state) {
+	if (state.lastCommentTime === null || typeof state.config.threshold !== 'number') {
+		return true;
+	}
+
+	let currentDate = new Date();
+	let pastDate = new Date(state.lastCommentTime);
+
+	pastDate.setSeconds(pastDate.getSeconds() + state.config.threshold);
+
+	return currentDate > pastDate;
+}
+
 export const getConfig = function(state) {
 	return function(key = null) {
 		if (key === null) {
