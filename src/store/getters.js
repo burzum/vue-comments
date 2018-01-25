@@ -13,8 +13,7 @@ export const getConfig = function(state) {
 		}
 
 		if (typeof key !== 'string') {
-			console.log('Comments config key must be a string.');
-			return;
+			throw 'Config key must be a string';
 		}
 
 		return state.config[key];

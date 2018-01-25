@@ -3,13 +3,16 @@ checks:
 filter:
     excluded_paths:
         - test/*
+        - node_modules/*
+        - build/*
+        - dist/*
 build:
     environment:
-        node: '8.4.0'
+        node: '8.9.4'
     tests:
         override:
             -
-                command: './node_modules/.bin/jest --config ./build/jest.config.coverage.js'
+                command: 'yarn run test:coverage'
                 coverage:
                     file: './test/unit/coverage/clover.xml'
                     format: 'clover'

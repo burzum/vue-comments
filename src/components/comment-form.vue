@@ -98,7 +98,7 @@ export default {
 			if (this.comment !== null) {
 				this.$commentsStore.dispatch('updateComment', this.comment2).then(() => {
 					this.clearAndReset();
-				}).catch((error ) => {
+				}).catch(() => {
 					this.error = 'There was a problem saving your comment';
 				});
 				return;
@@ -107,7 +107,7 @@ export default {
 			this.$commentsStore.dispatch('addComment', this.comment2)
 				.then(() => {
 					this.clearAndReset();
-				}).catch((error ) => {
+				}).catch(() => {
 					this.error = 'There was a problem saving your comment';
 				});
 		},

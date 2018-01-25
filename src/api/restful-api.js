@@ -23,16 +23,12 @@ export default class CommentsApi {
 	}
 
 	getCommentsBefore(model, id, parentId = null, time, params = {}) {
-		params: {
-			before: time
-		};
+		params.before = time;
 		return this.getComments(model, id, parentId, params);
 	}
 
 	getCommentsAfter(model, id, parentId = null, time, params = {}) {
-		params: {
-			after: time
-		};
+		params.after = time;
 		return this.getComments(model, id, parentId, params);
 	}
 

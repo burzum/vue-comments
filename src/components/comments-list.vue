@@ -1,8 +1,8 @@
 <template>
 	<div>
 		<ul class="comments-list">
-			<li v-for="comment in comments">
-				<comment :level="level" :comment="comment" :model="model" :model-id="modelId" :parent-id="parentId"></comment>
+			<li v-for="(comment, key) in comments" :key="comment.id">
+				<comment v-bind="key" :level="level" :comment="comment" :model="model" :model-id="modelId" :parent-id="parentId"></comment>
 			</li>
 		</ul>
 		<p v-if="hasMore && !loading">
@@ -53,7 +53,7 @@ export default {
 					this.loading = false;
 				});
 		},
-		loadMore: function() {
+		loadMore: function () {
 			this.loadComments({
 				page: this.pagination.page + 1
 			});

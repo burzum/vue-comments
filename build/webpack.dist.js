@@ -3,7 +3,7 @@ const webpack = require("webpack");
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
 module.exports = {
-	watch: true,
+	watch: false,
 	watchOptions: {
 		ignored: /node_modules/
 	},
@@ -15,7 +15,6 @@ module.exports = {
 		filename: "[name].js",
 		path: path.resolve(__dirname, '../dist'),
 		library: 'VueComments',
-		libraryTarget: 'umd'
 	},
 	externals: {
 		Vuex: 'Vuex',
@@ -40,7 +39,10 @@ module.exports = {
 				loader: 'vue-loader',
 				options: {
 					loaders: {
-						js: 'babel-loader'
+						js: 'babel-loader',
+						options: {
+							presets: ['env']
+						}
 					}
 				}
 			},
@@ -60,10 +62,12 @@ module.exports = {
 		new UglifyJsPlugin({
 			include: /\.min\.js$/,
 			uglifyOptions: {
+				compress: true,
+				mangle: true,
 				ecma: 6,
 				output: {
 					comments: false,
-					beautify: false
+					beautify: false,
 				},
 			}
 		})

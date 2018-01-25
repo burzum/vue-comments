@@ -14,12 +14,12 @@
 			{{comment.body}}
 		</div>
 		<div class="footer">
-			<a href="#" v-on:click.prevent="reply()" v-if="!isLoginRequired || isLoggedIn">reply</a>
+			<a href="#" class="reply-btn" v-on:click.prevent="reply()" v-if="!isLoginRequired || isLoggedIn">reply</a>
 			<span v-if="isMyComment">
-				 &bull;
-				<a href="#" v-on:click.prevent="editComment()">edit </a>
-				 &bull;
-				<a href="#" v-on:click.prevent="deleteComment()">delete</a>
+				&nbsp;&bull;&nbsp;
+				<a href="#" class="edit-btn" v-on:click.prevent="editComment()">edit </a>
+				&nbsp;&bull;&nbsp;
+				<a href="#" class="delete-btn" v-on:click.prevent="deleteComment()">delete</a>
 			</span>
 		</div>
 		<comment-form :model="model" :model-id="modelId" :comment="comment" v-if="formMode === 'edit' && !isLoginRequired" @closeForm="closeForm"></comment-form>

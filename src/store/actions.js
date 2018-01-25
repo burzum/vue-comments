@@ -39,7 +39,7 @@ export const deleteComment = function(context, data) {
 		data.foreign_key,
 		data.id
 	).then(function(result) {
-		//context.commit('addComment', result.data.comment);
+		context.commit('deleteComment', result.data.comment);
 	});
 };
 

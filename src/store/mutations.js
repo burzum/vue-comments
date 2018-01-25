@@ -1,4 +1,4 @@
-import Vue from 'Vue';
+import Vue from 'vue';
 
 export const setConfig = function(state, config) {
 	Vue.set(state, 'config', Object.assign({}, state.config, config));
@@ -59,8 +59,10 @@ export const updateComment = function(state, editedComment) {
 
 export const updatePagination = function(state, data) {
 	let key = data.model + data.modelId + data.parentId;
+	let pagination = Object.assign({}, state.pagination);
+	pagination[key] = data.pagination;
 
-	Vue.set(state.pagination, key, data.pagination);
+	Vue.set(state, 'pagination', pagination);
 };
 
 export const clearComments = function(state) {

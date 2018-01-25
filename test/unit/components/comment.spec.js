@@ -1,42 +1,46 @@
 import { mount, shallow } from '@vue/test-utils'
-import Comment from '../../../src/components/comment.vue';
+import commentsStore from '@/store/store';
+import Comment from '@/components/comment.vue';
+import Vue from 'vue';
+import Vuex from 'vuex';
+import VeeValidate from 'vee-validate';
+import state from '@/store/state';
+import comments from '../../fixtures/comments';
 
-const createCmp = propsData => mount(Comment, { propsData })
+describe('Comment Component', () => {
 
-describe('Comment.vue', () => {
-	let cmp;
+	let $commentsStore;
+
+	Vue.use(Vuex);
+	Vue.use(VeeValidate);
 
 	beforeEach(() => {
-		console.log('foreach test called');
-
-		// cmp = createCmp({
-		// 	data: {
-		// 		comment: {
-		// 			id: 1,
-		// 			user: {
-		// 				id: 1,
-		// 				username: 'falk'
-		// 			},
-		// 			name: 'test name',
-		// 			body: 'some body text',
-		// 			created: '01-01-2018'
-		// 		},
-		// 		modelId: 1,
-		// 		level: 1,
-		// 		parentId: null,
-		// 		model: 'SomeModel'
-		// 	}
-		// })
+		$commentsStore = commentsStore;
+		$commentsStore.getters.getConfig = jest.fn();
 	});
 
-	it('has a message property', () => {
-		// expect(cmp.vm('modelId', '1')).toBeTruthy()
-		expect(true).toEqual(true);
-	})
-//
-// 	test('test 1', () => {
-//
-// 		console.log(createCmp);
-// 		expect(true).toEqual(true);
-// 	});
+	it('equals messages to ["Cat"]', () => {
+		const wrapper = shallow(Comment, {
+			propsData: {
+				comment: comments[0],
+				modelId: 1,
+				model: 'Posts'
+			},
+			mocks: {
+				$commentsStore
+			}
+		});
+
+		expect(wrapper.vm._data.formMode).toEqual(false);
+
+		wrapper.find('.edit-btn').trigger('click');
+		expect(wrapper.vm._data.formMode).toEqual('edit');
+
+		wrapper.find('.reply-btn').trigger('click');
+		expect(wrapper.vm._data.formMode).toEqual('reply');
+
+		wrapper.vm.closeForm()
+		expect(wrapper.vm._data.formMode).toEqual(false);
+	});
+
 });
