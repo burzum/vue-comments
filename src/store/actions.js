@@ -34,7 +34,7 @@ export const loadComments = function(context, data) {
 };
 
 export const deleteComment = function(context, data) {
-	return api.deleteComment(
+	return api.remove(
 		data.model,
 		data.foreign_key,
 		data.id
@@ -47,6 +47,7 @@ export const updateComment = function(context, data) {
 	return api.update(
 		data.model,
 		data.foreign_key,
+		data.id,
 		data
 	).then(function(result) {
 		context.commit('addComment', result.data.comment);

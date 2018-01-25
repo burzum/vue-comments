@@ -49,6 +49,7 @@ export default {
 
 	created: function () {
 		if (this.comment !== null) {
+			this.clearAndReset(false);
 			this.comment2 = this.comment;
 		}
 	},
@@ -86,12 +87,14 @@ export default {
 				}
 			});
 		},
-		clearAndReset: function() {
+		clearAndReset: function(closeForm = true) {
 			this.comment2 = this.newComment();
 			this.error = null;
 			this.errors.clear();
 			this.$validator.reset();
-			this.$emit('closeForm');
+			if (closeForm) {
+				this.$emit('closeForm');
+			}
 		},
 		submit: function () {
 			if (this.errors.any()) {
@@ -106,7 +109,7 @@ export default {
 				this.$commentsStore.dispatch('updateComment', this.comment2).then(() => {
 					this.clearAndReset();
 				}).catch(() => {
-					this.error = 'There was a problem saving your comment';
+					this.error = 'There was a problem saving your comment. Please try again.';
 				});
 				return;
 			}
@@ -115,7 +118,7 @@ export default {
 				.then(() => {
 					this.clearAndReset();
 				}).catch(() => {
-					this.error = 'There was a problem saving your comment';
+					this.error = 'There was a problem saving your comment. Please try again.';
 				});
 		},
 		cancel: function () {

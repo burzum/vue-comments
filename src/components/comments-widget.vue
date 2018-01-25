@@ -2,7 +2,10 @@
 	<div class="comment-widget">
 		<comments-tabs v-if="showTabs === 'true'" :model="model" :model-id="modelId"></comments-tabs>
 		<comments-list :model="model" :model-id="modelId" ></comments-list>
-		<comment-form :model="model" :model-id="modelId" />
+		<comment-form v-if="showForm" :model="model" :model-id="modelId" />
+		<p v-if="!showForm">
+			You must be logged in to comment on this.
+		</p>
 	</div>
 </template>
 
@@ -16,6 +19,11 @@ export default {
 		},
 		showTabs: {
 			default: 'true'
+		}
+	},
+	computed: {
+		showForm: function() {
+			return this.$commentsStore.getters.canPost;
 		}
 	}
 };

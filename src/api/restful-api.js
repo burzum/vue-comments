@@ -1,5 +1,7 @@
 import axios from 'axios';
 
+
+
 export default class CommentsApi {
 
 	constructor(baseUrl = '/comments/') {
@@ -41,6 +43,6 @@ export default class CommentsApi {
 	}
 
 	update(model, id, commentId, data) {
-		this.axios.patch(model + '/' + id, data)
+		this.axios.patch(model + '/' + id + '/' + commentId, data)
 	}
-};
+}

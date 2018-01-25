@@ -24,6 +24,13 @@ export const canPostAgain = function(state) {
 	return currentDate > pastDate;
 }
 
+export const canPost = function(state) {
+	if (state.config.loginRequired) {
+		return isLoggedIn(state);
+	}
+	return true;
+};
+
 export const getConfig = function(state) {
 	return function(key = null) {
 		if (key === null) {

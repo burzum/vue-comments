@@ -14,6 +14,9 @@
 		<p class="loading-comments" v-if="loading">
 			Loading...
 		</p>
+		<p v-if="comments.length === 0 && !loading">
+			Nobody has yet commented on this
+		</p>
 	</div>
 </template>
 

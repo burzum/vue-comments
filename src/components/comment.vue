@@ -11,19 +11,19 @@
 			</div>
 		</div>
 		<div class="body">
-			{{comment.body}}
+			<template v-for="line in comment.body.split('\n')">{{line}}<br></template>
 		</div>
 		<div class="footer">
 			<a href="#" class="reply-btn" v-on:click.prevent="reply()" v-if="!isLoginRequired || isLoggedIn">reply</a>
 			<span v-if="isMyComment">
 				&nbsp;&bull;&nbsp;
-				<a href="#" class="edit-btn" v-on:click.prevent="editComment()">edit </a>
+				<a href="#" class="edit-btn" v-on:click.prevent="editComment()">edit</a>
 				&nbsp;&bull;&nbsp;
 				<a href="#" class="delete-btn" v-on:click.prevent="deleteComment()">delete</a>
 			</span>
 		</div>
-		<comment-form :model="model" :model-id="modelId" :comment="comment" v-if="formMode === 'edit' && !isLoginRequired" @closeForm="closeForm"></comment-form>
-		<comment-form :model="model" :model-id="modelId" :parent-id="comment.id" :reply-to="comment" v-if="formMode === 'reply' && !isLoginRequired" @closeForm="closeForm"></comment-form>
+		<comment-form :model="model" :model-id="modelId" :comment="comment" v-if="formMode === 'edit' && canComment" @closeForm="closeForm"></comment-form>
+		<comment-form :model="model" :model-id="modelId" :parent-id="comment.id" :reply-to="comment" v-if="formMode === 'reply' && canComment" @closeForm="closeForm"></comment-form>
 		<comments-list :level="level" v-if="hasChildren" :model="model" :model-id="modelId" :parent-id="comment.id"></comments-list>
 	</div>
 </template>
@@ -48,6 +48,9 @@ export default {
 				this.comment.id,
 			);
 		},
+		canComment: function() {
+			return this.$commentsStore.getters.canPost;
+		},
 		isLoggedIn: function() {
 			return this.$commentsStore.getters.isLoggedIn;
 		},
@@ -69,7 +72,7 @@ export default {
 			this.formMode = 'edit';
 		},
 		deleteComment: function () {
-			return this.$commentsStore.commit('deleteComment', this.comment);
+			return this.$commentsStore.dispatch('deleteComment', this.comment);
 		}
 	},
 	data: function() {
