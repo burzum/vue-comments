@@ -1,5 +1,9 @@
 # Comments Widget for Vue.js
 
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/burzum/vue-comments/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/burzum/vue-comments/?branch=master) 
+[![Code Coverage](https://scrutinizer-ci.com/g/burzum/vue-comments/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/burzum/vue-comments/?branch=master) 
+[![Build Status](https://scrutinizer-ci.com/g/burzum/vue-comments/badges/build.png?b=master)](https://scrutinizer-ci.com/g/burzum/vue-comments/build-status/master)
+
 Thought as a general purpose comments widget based on Vue.js. Similar to Facebooks comments or Disqus.
 
 **THIS IS WORK IN PROGRESS!**
