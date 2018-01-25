@@ -53,7 +53,7 @@ export default {
 					this.loading = false;
 				});
 		},
-		loadMore: function() {
+		loadMore: function () {
 			this.loadComments({
 				page: this.pagination.page + 1
 			});
