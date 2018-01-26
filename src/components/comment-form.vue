@@ -101,8 +101,8 @@ export default {
 				return;
 			}
 
-			if (this.replyTo !== null) {
-				this.comment2.parent_id = this.replyTo.id;
+			if (this.parentId !== null) {
+				this.comment2.parent_id = this.parentId;
 			}
 
 			if (this.comment !== null) {
@@ -117,7 +117,7 @@ export default {
 			// Checks the threshold before being able to post a new comment to  prevent spam or accidental re-submission
 			let canCommentAgain = this.$commentsStore.getters.canCommentAgain();
 			if (canCommentAgain !== true) {
-				this.error = 'You must wait ' + canCommentAgain.toPrecision(1) + ' seconds before you can comment again';
+				this.error = 'You must wait ' + canCommentAgain.toPrecision(1) + ' more seconds before you can comment again';
 				return;
 			}
 

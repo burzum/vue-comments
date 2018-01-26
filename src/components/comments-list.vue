@@ -17,7 +17,6 @@
 		<p v-if="comments.length === 0 && !loading">
 			Nobody has yet commented on this
 		</p>
-		{{level}}
 	</div>
 </template>
 

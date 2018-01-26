@@ -1,13 +1,15 @@
 <template>
 	<div class="comment">
 		<div class="header">
-			<div v-if="!comment.user">
+			<div v-if="comment.user === null">
 				<span class="name">{{comment.name}}</span>
 				wrote on
 				<span class="time">{{comment.created}}</span>:
 			</div>
-			<div v-else>
-				<span class="name">{{comment.user.username}}</span> wrote on {{comment.created}}:
+			<div v-if="comment.user.id">
+				<span class="name">{{comment.user.id}}</span>
+				wrote on
+				<span class="time">{{comment.created}}</span>:
 			</div>
 		</div>
 		<div class="body">
@@ -29,7 +31,7 @@
 			</span>
 		</div>
 		<comment-form key="`replyForm`" :model="model" :model-id="modelId" :comment="comment" v-if="showEditForm && canComment" @closeForm="closeForm"></comment-form>
-		<comment-form key="`editForm`" :model="model" :model-id="modelId" :parent-id="comment.id" :reply-to="comment" v-if="showReplyForm && canComment" @closeForm="closeForm"></comment-form>
+		<comment-form key="`editForm`" :model="model" :model-id="modelId" :parent-id="replyToId" :reply-to="comment" v-if="showReplyForm && canComment" @closeForm="closeForm"></comment-form>
 		<comments-list :level="level + 1" v-if="hasChildren" :model="model" :model-id="modelId" :parent-id="comment.id"></comments-list>
 	</div>
 </template>
@@ -47,6 +49,19 @@ export default {
 		},
 	},
 	computed: {
+		replyToId: function() {
+			let maxDepth = this.$commentsStore.getters.getConfig('maxDepth');
+
+			if (maxDepth === 0 || typeof maxDepth !== 'number') {
+				this.comment.id;
+			}
+
+			if (this.level === maxDepth && this.comment.parent_id !== null) {
+				return this.comment.parent_id;
+			}
+
+			return this.comment.id;
+		},
 		hasChildren: function() {
 			return this.$commentsStore.getters.hasChildren(
 				this.model,
