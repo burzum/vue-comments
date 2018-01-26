@@ -114,6 +114,13 @@ export default {
 				return;
 			}
 
+			// Checks the threshold before being able to post a new comment to  prevent spam or accidental re-submission
+			let canCommentAgain = this.$commentsStore.getters.canCommentAgain();
+			if (canCommentAgain !== true) {
+				this.error = 'You must wait ' + canCommentAgain.toPrecision(1) + ' seconds before you can comment again';
+				return;
+			}
+
 			this.$commentsStore.dispatch('addComment', this.comment2)
 				.then(() => {
 					this.clearAndReset();

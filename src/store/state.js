@@ -6,7 +6,7 @@ const state = {
 	user: null,
 	config: {
 		// Time the user needs to wait in seconds before he can post another comment
-		threshold: 60,
+		threshold: 10,
 		// max depth of the comment tree structure
 		maxDepth: 1,
 		// Only logged in users are allowed to post or not

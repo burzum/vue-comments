@@ -55,7 +55,7 @@ export default {
 			);
 		},
 		canComment: function() {
-			return this.$commentsStore.getters.canPost;
+			return this.$commentsStore.getters.canComment;
 		},
 		isLoggedIn: function() {
 			return this.$commentsStore.getters.isLoggedIn;

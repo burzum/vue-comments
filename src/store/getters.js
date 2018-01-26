@@ -11,20 +11,26 @@ export const isLoggedIn = function(state) {
  *
  * @return boolean
  */
-export const canPostAgain = function(state) {
-	if (state.lastCommentTime === null || typeof state.config.threshold !== 'number') {
-		return true;
-	}
+export const canCommentAgain = function(state) {
+	return function() {
+		if (state.lastCommentTime === null || typeof state.config.threshold !== 'number') {
+			return true;
+		}
 
-	let currentDate = new Date();
-	let pastDate = new Date(state.lastCommentTime);
+		let currentDate = new Date();
+		let pastDate = new Date(state.lastCommentTime);
 
-	pastDate.setSeconds(pastDate.getSeconds() + state.config.threshold);
+		pastDate.setSeconds(pastDate.getSeconds() + state.config.threshold);
 
-	return currentDate > pastDate;
+		if (pastDate < currentDate) {
+			return true;
+		}
+
+		return (pastDate.getTime() - currentDate.getTime()) / 1000;
+	};
 }
 
-export const canPost = function(state) {
+export const canComment = function(state) {
 	if (state.config.loginRequired) {
 		return isLoggedIn(state);
 	}
@@ -75,6 +81,31 @@ export const hasChildren = function(state) {
 		return result.length > 0;
 	}
 };
+
+export const getParentComment = function(state) {
+	return function(comment) {
+		let commentId;
+
+		if (typeof comment === 'number' || typeof comment === 'string') {
+			commentId =  comment;
+		} else if(typeof comment === 'object' && comment.id !== undefined) {
+			commentId = comment.id;
+		} else {
+			throw 'Invalid argument passed to getParentComment()';
+		}
+
+		let comments = state.comments.filter(function(parentComment) {
+			// Has to be weak typed, fucking dynamic types
+			return parentComment.id == commentId;
+		});
+
+		if (comments.length > 0) {
+			return comments[0];
+		}
+
+		return null;
+	};
+}
 
 export const hasMore = function(state) {
 	return function(model, modelId, parentId = null) {

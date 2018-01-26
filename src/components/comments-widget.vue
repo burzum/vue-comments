@@ -23,7 +23,7 @@ export default {
 	},
 	computed: {
 		showForm: function() {
-			return this.$commentsStore.getters.canPost;
+			return this.$commentsStore.getters.canComment;
 		}
 	}
 };

@@ -17,8 +17,8 @@ module.exports = {
 		library: 'VueComments',
 	},
 	externals: {
-		Vuex: 'vuex',
-		vue: 'vue',
+		Vuex: 'Vuex',
+		Vue: 'Vue',
 		axios: 'axios',
 		VeeValidate: 'vee-validate'
 	},
