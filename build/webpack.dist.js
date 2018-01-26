@@ -1,6 +1,6 @@
 const path = require('path');
-const webpack = require("webpack");
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const webpack = require('webpack');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
 	watch: false,
@@ -12,13 +12,13 @@ module.exports = {
 		'vue-comments.min': './src/install.js'
 	},
 	output: {
-		filename: "[name].js",
+		filename: '[name].js',
 		path: path.resolve(__dirname, '../dist'),
 		library: 'VueComments',
 	},
 	externals: {
-		Vuex: 'Vuex',
-		Vue: 'Vue',
+		Vuex: 'vuex',
+		vue: 'vue',
 		axios: 'axios',
 		VeeValidate: 'VeeValidate'
 	},
@@ -57,7 +57,7 @@ module.exports = {
 			}
 		]
 	},
-	devtool: "source-map",
+	devtool: 'source-map',
 	plugins: [
 		new UglifyJsPlugin({
 			include: /\.min\.js$/,
