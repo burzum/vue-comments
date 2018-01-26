@@ -8,6 +8,8 @@ Thought as a general purpose comments widget based on Vue.js. Similar to Faceboo
 
 **THIS IS WORK IN PROGRESS!**
 
+It already works but there are things to improve and bugs to find and fix.
+
 ## Usage
 
 Load the VueComments plugin and VeeValidate, it will register everything that is required.
@@ -24,11 +26,8 @@ var vueApp = new Vue({
 	el: '#vue-app',
 	data: {}
 });
-
 ```
-
 Use it inside your applications markup:
-
 
 ```html
 <h3>Comments</h3>
@@ -38,21 +37,23 @@ Use it inside your applications markup:
 </comments-widget>
 ```
 
-## Building
+## Building and Development
 
 Build a dist
 
-```sh
-yarn build
+```bash
+yarn install
+yarn run build
 ```
 
-Linting
-
-
-```sh
-yarn lint
+```bash
+yarn run watch
 ```
+
+Run `yarn run` for additional scripts.
 
 ## License
 
-GPL 3.0
+Copyright Florian Krämer
+
+[GPL 3.0](LICENSE)
