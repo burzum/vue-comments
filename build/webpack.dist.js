@@ -20,7 +20,7 @@ module.exports = {
 		Vuex: 'vuex',
 		vue: 'vue',
 		axios: 'axios',
-		VeeValidate: 'VeeValidate'
+		VeeValidate: 'vee-validate'
 	},
 	module: {
 		rules: [
