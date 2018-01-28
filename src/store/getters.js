@@ -79,7 +79,7 @@ export const hasChildren = function(state) {
 		});
 
 		return result.length > 0;
-	}
+	};
 };
 
 export const getParentComment = function(state) {

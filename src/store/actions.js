@@ -11,7 +11,7 @@ export const loadComments = function(context, data) {
 	).then(function(result) {
 		result.data.comments.forEach((comment) => {
 			context.commit('addComment', comment)
-			// Handle child comments if there are any
+			// Handle child comments if there are any included in the result
 			comment.comments.forEach((comment) => {
 				context.commit('addComment', comment);
 

@@ -4,12 +4,12 @@
 			<div v-if="comment.user === null">
 				<span class="name">{{comment.name}}</span>
 				wrote on
-				<span class="time">{{comment.created}}</span>:
+				<span class="time">{{comment.created.toLocaleString()}}</span>:
 			</div>
 			<div v-if="comment.user.id">
 				<span class="name">{{comment.user.id}}</span>
 				wrote on
-				<span class="time">{{comment.created}}</span>:
+				<span class="time">{{comment.created.toLocaleString()}}</span>:
 			</div>
 		</div>
 		<div class="body">

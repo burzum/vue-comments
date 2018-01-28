@@ -3,22 +3,22 @@
 		<div class="row" v-if="!isLoggedIn">
 			<div class="form-group col-md-4" :class="{'input': true, 'has-error': errors.has('name') }">
 				<label>Name</label>
-				<input v-validate.disabled="'required'" name="name" type="text" v-model="comment2.name" class="form-control" data-vv-validate-on="none"/>
+				<input v-validate.disabled="'required'" name="name" type="text" v-model="newComment.name" class="form-control" data-vv-validate-on="none"/>
 				<div v-show="errors.has('name')" class="has-error">{{ errors.first('name') }}</div>
 			</div>
 			<div class="form-group col-md-4" :class="{'input': true, 'has-error': errors.has('email') }">
 				<label>Email</label>
-				<input v-validate.disabled="'email|required'" name="email" type="text" v-model="comment2.email" class="form-control" data-vv-validate-on="none"/>
+				<input v-validate.disabled="'email'" name="email" type="text" v-model="newComment.email" class="form-control" data-vv-validate-on="none"/>
 				<div v-show="errors.has('email')" class="has-error">{{ errors.first('email') }}</div>
 			</div>
 			<div class="form-group col-md-4" :class="{'input': true, 'has-error': errors.has('website') }">
 				<label>Website</label>
-				<input v-validate.disabled="'url|required'" name="website" type="text" v-model="comment2.website" class="form-control" data-vv-validate-on="none"/>
+				<input v-validate.disabled="'url'" name="website" type="text" v-model="newComment.website" class="form-control" data-vv-validate-on="none"/>
 				<div v-show="errors.has('website')" class="has-error">{{ errors.first('website') }}</div>
 			</div>
 		</div>
 		<div class="form-group" :class="{'input': true, 'has-error': errors.has('body') }">
-			<textarea v-validate.disabled="'required'" v-model="comment2.body" class="form-control" name="body" data-vv-validate-on="none"></textarea>
+			<textarea v-validate.disabled="'required'" v-model="newComment.body" class="form-control" name="body" data-vv-validate-on="none"></textarea>
 			<div v-show="errors.has('body')" class="has-error">{{ errors.first('body') }}</div>
 		</div>
 		<div v-if="error" class="alert alert-danger fade in">
@@ -50,13 +50,13 @@ export default {
 	created: function () {
 		if (this.comment !== null) {
 			this.clearAndReset(false);
-			this.comment2 = this.comment;
+			this.newComment = this.comment;
 		}
 	},
 
 	data: function () {
 		return {
-			comment2: this.newComment(),
+			newComment: this.createNewComment(),
 			error: null
 		};
 	},
@@ -71,7 +71,7 @@ export default {
 	},
 
 	methods: {
-		newComment() {
+		createNewComment() {
 			return {
 				body: '',
 				name: '',
@@ -88,7 +88,7 @@ export default {
 			});
 		},
 		clearAndReset: function(closeForm = true) {
-			this.comment2 = this.newComment();
+			this.newComment = this.createNewComment();
 			this.error = null;
 			this.errors.clear();
 			this.$validator.reset();
@@ -102,11 +102,11 @@ export default {
 			}
 
 			if (this.parentId !== null) {
-				this.comment2.parent_id = this.parentId;
+				this.newComment.parent_id = this.parentId;
 			}
 
 			if (this.comment !== null) {
-				this.$commentsStore.dispatch('updateComment', this.comment2).then(() => {
+				this.$commentsStore.dispatch('updateComment', this.newComment).then(() => {
 					this.clearAndReset();
 				}).catch(() => {
 					this.error = 'There was a problem saving your comment. Please try again.';
@@ -121,7 +121,7 @@ export default {
 				return;
 			}
 
-			this.$commentsStore.dispatch('addComment', this.comment2)
+			this.$commentsStore.dispatch('addComment', this.newComment)
 				.then(() => {
 					this.clearAndReset();
 				}).catch(() => {
