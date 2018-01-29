@@ -14,7 +14,7 @@ export default class CommentsApi {
 		let url = model + '/' + id;
 
 		if (parentId !== null) {
-			url = url + '/' + parentId
+			url = url + '/' + parentId;
 		}
 
 		return this.axios.get(url, {

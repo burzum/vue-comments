@@ -1,6 +1,7 @@
 <template>
 	<div class="comment">
 		<div class="header">
+			{{$t('comments.hello')}}
 			<div v-if="comment.user === null">
 				<span class="name">{{comment.name}}</span>
 				wrote on
