@@ -17,8 +17,8 @@ module.exports = {
 		library: 'VueComments',
 	},
 	externals: {
-		Vuex: 'Vuex',
-		Vue: 'Vue',
+		vuex: 'vuex',
+		vue: 'vue',
 		axios: 'axios',
 		VeeValidate: 'vee-validate'
 	},
@@ -26,6 +26,7 @@ module.exports = {
 		rules: [
 			{
 				test: /\.js$/,
+				include: /(src)/,
 				exclude: /(node_modules|bower_components)/,
 				use: {
 					loader: 'babel-loader',
