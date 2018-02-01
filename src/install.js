@@ -1,6 +1,6 @@
 import components from './components';
 import store from './store/store';
-import Vuex from 'Vuex';
+import Vuex from 'vuex';
 
 export function install(_Vue, options = {}) {
 	let Vue = _Vue;
