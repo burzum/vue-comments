@@ -17,10 +17,10 @@ module.exports = {
 		library: 'VueComments',
 	},
 	externals: {
-		vuex: 'vuex',
-		vue: 'vue',
+		vuex: 'Vuex',
+		vue: 'Vue',
 		axios: 'axios',
-		VeeValidate: 'vee-validate'
+		VeeValidate: 'VeeValidate'
 	},
 	module: {
 		rules: [
