@@ -4,6 +4,7 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
 	watch: false,
+	target: 'web',
 	watchOptions: {
 		ignored: /node_modules/
 	},
@@ -15,12 +16,14 @@ module.exports = {
 		filename: '[name].js',
 		path: path.resolve(__dirname, '../dist'),
 		library: 'VueComments',
+		libraryTarget: 'umd'
 	},
 	externals: {
-		vuex: 'Vuex',
-		vue: 'Vue',
+		vuex: 'vuex',
+		vue: 'vue',
 		axios: 'axios',
-		VeeValidate: 'VeeValidate'
+		'vue-i18n': 'commonjs vue-i18n',
+		'vee-validate': 'commonjs vee-validate'
 	},
 	module: {
 		rules: [

@@ -1,8 +1,10 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import VueI18n from 'vue-i18n';
 import VeeValidate from 'vee-validate';
-import VueComments from '../../dist/vue-comments';
+import VueComments from '../../src/install';
 
+Vue.use(VueI18n);
 Vue.use(VeeValidate);
 Vue.use(VueComments);
 
