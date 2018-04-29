@@ -1,4 +1,4 @@
-import components from './components';
+import components from './index';
 import store from './store/store';
 import Vuex from 'vuex';
 
