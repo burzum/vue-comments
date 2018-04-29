@@ -32,6 +32,8 @@
 
 <script>
 export default {
+	name: 'CommentForm',
+
 	props: {
 		modelId: null,
 		parentId: null,

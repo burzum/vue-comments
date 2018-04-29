@@ -21,7 +21,15 @@
 </template>
 
 <script>
+import Comment from './comment.vue';
+
 export default {
+	name: 'CommentsList',
+
+	components: {
+		Comment
+	},
+
 	props: {
 		modelId: null,
 		parentId: {
@@ -36,11 +44,13 @@ export default {
 			default: 1
 		}
 	},
+
 	created: function() {
 		if (this.parentId === null) {
 			this.loadComments();
 		}
 	},
+
 	methods: {
 		loadComments(params = {}) {
 			this.loading = true;
@@ -65,6 +75,7 @@ export default {
 			});
 		}
 	},
+
 	computed: {
 		pagination: function() {
 			return this.$commentsStore.getters.getPagination(
@@ -88,6 +99,7 @@ export default {
 			);
 		}
 	},
+
 	data: function() {
 		return {
 			initialized: false,

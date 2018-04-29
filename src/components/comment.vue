@@ -1,7 +1,6 @@
 <template>
 	<div class="comment">
 		<div class="header">
-			{{$t('comments.hello')}}
 			<div v-if="comment.user === null">
 				<span class="name">{{comment.name}}</span>
 				wrote on
@@ -14,7 +13,7 @@
 			</div>
 		</div>
 		<div class="body">
-			<template v-for="line in comment.body.split('\n')">{{line}}<br></template>
+			<div :key="index" v-for="(line, index) in comment.body.split('\n')">{{line}}<br /></div>
 		</div>
 		<div class="footer">
 			<a href="#" class="reply-btn" v-on:click.prevent="reply()" v-if="!isLoginRequired || isLoggedIn">
@@ -38,7 +37,17 @@
 </template>
 
 <script>
+import CommentsList from './comments-list.vue';
+import CommentForm from './comment-form.vue';
+
 export default {
+	name: 'Comment',
+
+	components: {
+		CommentsList,
+		CommentForm
+	},
+
 	props: {
 		comment: null,
 		modelId: null,
@@ -49,6 +58,7 @@ export default {
 			default: null
 		},
 	},
+
 	computed: {
 		replyToId: function() {
 			let maxDepth = this.$commentsStore.getters.getConfig('maxDepth');

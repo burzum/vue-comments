@@ -8,6 +8,21 @@ Vue.use(VueI18n);
 Vue.use(VeeValidate);
 Vue.use(VueComments);
 
+i18next
+	//.use(window.i18nextXHRBackend)
+	.init({
+		lng: 'en',
+		fallbackLng: 'en',
+		ns: ['wa'],
+		defaultNs: 'wa',
+		backend: {
+			loadPath: '/locales/{{lng}}/{{ns}}.json'
+		},
+		debug: false,
+	}, function(error, t) {
+		//console.log(error);
+	});
+
 const store = new Vuex.Store();
 
 export default testApp = new Vue({

@@ -10,7 +10,17 @@
 </template>
 
 <script>
+import CommentsList from './comments-list.vue';
+import CommentForm from './comment-form.vue';
+
 export default {
+	name: 'CommentsWidget',
+
+	components: {
+		CommentsList,
+		CommentForm
+	},
+
 	props: {
 		modelId: null,
 		model: {
@@ -21,6 +31,7 @@ export default {
 			default: 'true'
 		}
 	},
+
 	computed: {
 		showForm: function() {
 			return this.$commentsStore.getters.canComment;

@@ -11,6 +11,8 @@
 
 <script>
 export default {
+	name: 'CommentTags',
+
 	props: {
 		modelId: null,
 		parentId: {
@@ -21,6 +23,7 @@ export default {
 			default: null
 		},
 	},
+
 	methods: {
 		sortBy(orderBy) {
 			this.$commentsStore.commit('setOrderBy', orderBy);
