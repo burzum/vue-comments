@@ -2,7 +2,7 @@ import components from './index';
 import store from './store/store';
 import Vuex from 'vuex';
 
-export function install(_Vue, options = {}) {
+export default function install(_Vue, options = {}) {
 	let Vue = _Vue;
 
 	for (var key in components) {
